@@ -5,10 +5,16 @@
 <!-- SignUp && Login Button -->
             <div class="ml-32">
                 <NuxtLink to="/login">
-                    <button @click="loginpage" class="text-white bg-gradient-to-r from-blue-400  to-blue-700 focus:ring-4 focus:ring-blue-300 font-medium  ">
-                        {{ login.userlogin ? "Log out" : "Login" }}
+                    <button class="text-white bg-gradient-to-r from-blue-400  to-blue-700 focus:ring-4 focus:ring-blue-300 font-medium  "
+                        v-if="!Loginuser.userlogin">
+                        Login
+                    </button>
+                    <button @click="logoutUser" class="text-white bg-gradient-to-r from-red-400  to-red-700 focus:ring-4 focus:ring-red-300 font-medium  "
+                        v-else >
+                        LogOut
                     </button>
                 </NuxtLink>
+
             </div>
 <!-- Navigation List -->
             <ul class="space-x-10 ">
@@ -47,12 +53,25 @@
 <script setup>
 import { useUserAuthStore } from "~/store/userAuth";
 
-const login = useUserAuthStore()
+const Loginuser = useUserAuthStore()
 
-function loginpage(){
-    login.login()
+
+function logoutUser(){
+    useLogoutUser()
     return navigateTo("/login")
 }
+
+onMounted(()=> {
+    Loginuser.setLoginData()
+    const route = useRoute()
+    if(Loginuser.userlogin){
+
+        if(route.path === '/login'){
+            return navigateTo('/')
+        }
+        
+    }
+})
 
 </script>
 

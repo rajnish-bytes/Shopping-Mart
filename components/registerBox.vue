@@ -26,16 +26,19 @@
                                 <div class="mt-1">
                                     <input id="Fname" type="text" autocomplete="email" required
                                     class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                    placeholder="First Name">
+                                    placeholder="First Name"
+                                    v-model="newUser.Fname"
+                                    >
                                 </div>
                                 
                                 <label for="Lname" class="block text-sm font-medium text-gray-700 mt-6">
                                     Last Name
                                 </label>
                                 <div class="mt-1">
-                                    <input id="Fname" type="text" autocomplete="email" required
+                                    <input id="Lname" type="text" autocomplete="email" required
                                     class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                    placeholder="Last Name">
+                                    placeholder="Last Name"
+                                    v-model="newUser.Lname">
                                 </div>
                             </div>
                             
@@ -47,7 +50,8 @@
                                   <div class="mt-1">
                                         <input id="email" name="email" type="email" autocomplete="email" required
                                               class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                              placeholder="Enter your email address">
+                                              placeholder="Enter your email address"
+                                              v-model="newUser.email">
                                   </div>
                             </div>
                             <!--  Password Container -->
@@ -59,7 +63,8 @@
                                         <input id="password" name="password" type="password" autocomplete="current-password"
                                               required
                                               class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                              placeholder="Enter your password">
+                                              placeholder="Enter your password"
+                                              v-model="newUser.password">
                                   </div>
                             </div>
                             <!-- remember me && forgot password container -->
@@ -75,7 +80,7 @@
                             </div>
                             <!-- sign up button container -->
                             <div>
-                                  <button type="submit"
+                                  <button type="submit" @click.prevent="add()"
                                         class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 
                                         Sign Up
@@ -100,9 +105,20 @@
 </template>
 
 <script setup>
+
 const mediaImg = [
       "https://www.svgrepo.com/show/512120/facebook-176.svg",
       "https://www.svgrepo.com/show/513008/twitter-154.svg",
       "https://www.svgrepo.com/show/506498/google.svg",
 ]
+const newUser = ref({
+      email: '',
+      password: '',
+      Fname: '',
+      Lname: '',
+})
+
+function add(){
+      useAddEmailPass(newUser.value.email , newUser.value.password , newUser.value.Fname , newUser.value.Lname)
+}
 </script>

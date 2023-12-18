@@ -12,7 +12,7 @@
       }
 
       .effect {
-            @apply drop-shadow-3xl transform ease-in duration-200 transition-all hover:scale-95 hover:drop-shadow-sm
+            @apply drop-shadow-sm transform ease-in duration-200 transition-all hover:scale-105 hover:drop-shadow-3xl
       }
       .boxsdo{
       text-shadow: 0 0 10px rgb(76, 187, 221),
