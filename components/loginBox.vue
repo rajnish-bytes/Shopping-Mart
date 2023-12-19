@@ -4,12 +4,12 @@
 
             <div class="sm:mx-auto sm:w-full sm:max-w-md">
                   <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                        Sign in to your account
+                        {{$t(`Sign in to your account`)}}
                   </h2>
                   <p class="mt-2 text-center text-sm text-gray-600 max-w">
-                        Or
+                        {{$t(`Or`)}}
                         <NuxtLink to="/register" class="font-medium text-blue-600 hover:text-blue-500">
-                              create an account
+                              {{$t(`create an account`)}}
                         </NuxtLink>
                   </p>
             </div>
@@ -21,7 +21,7 @@
                               <!--  email address container -->
                               <div>
                                     <label for="email" class="block text-sm font-medium text-gray-700">
-                                          Email address
+                                          {{$t(`Email address`)}}
                                     </label>
                                     <div class="mt-1">
                                           <input id="email" name="email" type="email" autocomplete="email" required
@@ -33,7 +33,7 @@
                               <!--  Password Container -->
                               <div>
                                     <label for="password" class="block text-sm font-medium text-gray-700">
-                                          Password
+                                          {{$t(`Password`)}}
                                     </label>
                                     <div class="mt-1">
                                           <input id="password" name="password" type="password" autocomplete="current-password"
@@ -49,13 +49,13 @@
                                           <input id="remember_me" name="remember_me" type="checkbox"
                                                 class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
                                           <label for="remember_me" class="ml-2 block text-sm text-gray-900">
-                                                Remember me
+                                                {{$t(`Remember me`)}}
                                           </label>
                                     </div>
 
                                     <div class="text-sm">
                                           <a href="#" class="font-medium text-blue-600 hover:text-blue-500">
-                                                Forgot your password?
+                                                {{$t(`Forgot your password?`)}}
                                           </a>
                                     </div>
                               </div>
@@ -64,7 +64,7 @@
                                     <button type="submit" @click.prevent="Loginuser"
                                           class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 
-                                          Sign in
+                                          {{$t(`Sign in`)}}
                                     </button>
                               </div>
                         </form>

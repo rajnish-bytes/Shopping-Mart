@@ -46,7 +46,7 @@ export const useLoginWithEmailPass = (email: string, password: string) => {
             .then(async(currentUser) => {
                   await navigateTo("/")
                   alert( `${ currentUser.user.displayName } Login successfull !!` )
-                  userAuth.userName = currentUser.user.displayName as string
+                  // userAuth.userName = currentUser.user.displayName as string
                   userAuth.login()
             })
             .catch((e) => {

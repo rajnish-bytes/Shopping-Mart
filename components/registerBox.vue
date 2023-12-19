@@ -4,12 +4,12 @@
 
           <div class="sm:mx-auto sm:w-full sm:max-w-md">
                 <h2 class=" text-center text-3xl font-extrabold text-gray-900">
-                      Create new account
+                      {{$t(`Create new account`)}}
                 </h2>
                 <p class="mt-2 text-center text-sm text-gray-600 max-w">
-                      Or
+                      {{$t(`Or`)}}
                       <NuxtLink to="/login" class="font-medium text-blue-700 hover:text-blue-800">
-                            Login
+                            {{$t(`Login`)}}
                       </NuxtLink>
                 </p>
           </div>
@@ -21,7 +21,7 @@
                           <!-- firstname && Lastname  -->
                           <div>
                                 <label for="Fname" class="block text-sm font-medium text-gray-700">
-                                  First Name
+                                  {{$t(`First Name`)}}
                                 </label>
                                 <div class="mt-1">
                                     <input id="Fname" type="text" autocomplete="email" required
@@ -32,7 +32,7 @@
                                 </div>
                                 
                                 <label for="Lname" class="block text-sm font-medium text-gray-700 mt-6">
-                                    Last Name
+                                    {{$t(`Last Name`)}}
                                 </label>
                                 <div class="mt-1">
                                     <input id="Lname" type="text" autocomplete="email" required
@@ -45,7 +45,7 @@
                             <!--  email address container -->
                             <div>
                                   <label for="email" class="block text-sm font-medium text-gray-700">
-                                        Email address
+                                        {{$t(`Email address`)}}
                                   </label>
                                   <div class="mt-1">
                                         <input id="email" name="email" type="email" autocomplete="email" required
@@ -57,7 +57,7 @@
                             <!--  Password Container -->
                             <div>
                                   <label for="password" class="block text-sm font-medium text-gray-700">
-                                        Password
+                                        {{$t(`Password`)}}
                                   </label>
                                   <div class="mt-1">
                                         <input id="password" name="password" type="password" autocomplete="current-password"
@@ -73,7 +73,7 @@
                                         <input id="remember_me" name="remember_me" type="checkbox"
                                               class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
                                         <label for="remember_me" class="ml-2 block text-sm text-gray-900">
-                                              Remember me
+                                              {{$t(`Remember me`)}}
                                         </label>
                                   </div>
 
@@ -83,7 +83,7 @@
                                   <button type="submit" @click.prevent="add()"
                                         class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 
-                                        Sign Up
+                                        {{$t(`Sign Up`)}}
                                   </button>
                             </div>
                       </form>
