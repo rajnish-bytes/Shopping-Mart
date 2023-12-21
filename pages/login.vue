@@ -1,5 +1,7 @@
 <template>
-      <LoginBox />
+      <NuxtLayout>
+            <LoginBox />
+      </NuxtLayout>
 </template>
 
 <script setup>

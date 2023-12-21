@@ -1,5 +1,7 @@
 <template>
-      <RegisterBox />
+      <NuxtLayout>
+            <RegisterBox />
+      </NuxtLayout>
 </template>
 
 <script setup>

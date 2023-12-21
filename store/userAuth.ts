@@ -27,7 +27,6 @@ export const useUserAuthStore = defineStore('authantication', () => {
 
       function setUsername(username: string) {
             userName.value = username
-            console.log(userName.value)
       }
 
       function setLoginData() {

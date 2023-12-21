@@ -1,9 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  app: {
-    pageTransition: false
-  },
+  ssr: true,
   css: ['~/assets/css/main.css'],
   postcss: {
     plugins: {

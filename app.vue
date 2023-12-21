@@ -42,11 +42,9 @@
 
     <!-- Pages Load Box -->
     <div class=" h-screen ">
-        <NuxtLayout>
 
             <NuxtPage />
 
-        </NuxtLayout>
     </div>
 </template>
 
@@ -65,14 +63,24 @@ function logoutUser() {
 
 onMounted(() => {
     Loginuser.setLoginData()
-    if (Loginuser.userlogin) {
-        const route = useRoute()
+    const route = useRoute()
 
+    if (Loginuser.userlogin) {
         if (route.path === '/login') {
             return navigateTo('/')
         }
-
+    }else{
+        if (route.path === '/posts') {
+            return navigateTo('/login')
+        }
+        else if(route.path === '/posts/'){
+            return navigateTo('/login')
+        }
+        // else if(route.path === `/posts/${route.params.id}`){
+        //     return navigateTo('/login')
+        // }
     }
+
     const auth = getAuth()
     auth.onAuthStateChanged((user) => {
         if(user){
