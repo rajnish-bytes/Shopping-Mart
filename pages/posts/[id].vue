@@ -90,6 +90,7 @@
                                     <div class="flex flex-wrap items-center -mx-4 ">
                                           <div class="w-full px-4 mb-4 lg:w-1/2 lg:mb-0">
                                                 <button
+                                                      @click="addCartItem(productsData)"
                                                       class="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
                                                       Add to Cart
                                                 </button>
@@ -109,6 +110,7 @@
 </template>
 
 <script setup>
+import { useCartStore } from "~/store/cartStore";
 import { useFetchStore } from "~/store/fetchPost";
 
 definePageMeta({
@@ -117,6 +119,9 @@ definePageMeta({
 
 const route = useRoute()
 const productStore = useFetchStore()
+const { addCartItem } = useCartStore()
 
 const productsData = toRaw(productStore.productsData)[route.params.id - 1]
+
+
 </script>

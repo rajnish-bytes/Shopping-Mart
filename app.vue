@@ -26,6 +26,9 @@
             <li class="inline hover:border-blue-400 hover:border-b-2 ">
                 <NuxtLink to="/posts">{{ $t('Posts') }}</NuxtLink>
             </li>
+            <li v-if="Loginuser.userlogin" class="inline hover:border-blue-400 hover:border-b-2">
+                <NuxtLink to="/cart">Cart</NuxtLink>
+            </li>
             <li class="inline hover:border-blue-400 hover:border-b-2">
                 <NuxtLink to="/about">{{ $t('About') }}</NuxtLink>
             </li>
