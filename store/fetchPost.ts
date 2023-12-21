@@ -6,8 +6,12 @@ interface PostDetails {
       id: number
       image: string
       price: number
-      rating: object
+      rating: {
+            rate: number
+            count: number
+      }
       title: string
+      quantity: number
 }
 
 export const useFetchStore = defineStore('postData', () => {

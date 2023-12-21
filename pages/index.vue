@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="h-screen w-1/2  center">
-                <img src="~assets/img/home.jpg" alt="wildlife">
+                <img src="~public/img/home.jpg" alt="wildlife">
             </div>
       </div>
       

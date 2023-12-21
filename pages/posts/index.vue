@@ -22,7 +22,7 @@
                                     <!-- product rating and star -->
                                     <div class="mt-2.5 mb-5 flex items-center">
                                           <span
-                                                class="mr-2 rounded bg-yellow-200 px-2.5 py-0.5 text-xs font-semibold">{{ product.rating?.rate }}</span>
+                                                class="mr-2 rounded bg-yellow-200 px-2.5 py-0.5 text-xs font-semibold">{{ product.rating.rate }}</span>
                                           <svg v-for="star in 5" aria-hidden="true" class="h-5 w-5 text-yellow-300" fill="currentColor"
                                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -34,12 +34,12 @@
                                     <!-- product price and add to card container -->
                                     <div class="flex items-center justify-between">
                                           <p>
-                                                <span class="text-3xl font-bold text-slate-900">${{ product.price }}</span>
-                                                <span class="text-sm text-slate-900 line-through">${{ product.price * 2.4 }}</span>
+                                                <span class="text-2xl font-bold text-slate-900">${{ product.price }}</span>
+                                                <span class="text-sm text-slate-900 line-through">${{ (product.price * 2.4).toFixed(2) }}</span>
                                           </p>
                                           <button
-                                                class="flex items-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
-                                                @click="addCartItem(product)" >
+                                                class="flex items-center rounded-md bg-slate-900 px-3 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                                                @click="addInCartStore(product)" >
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-6 w-6" fill="none"
                                                       viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
                                                       >
@@ -98,11 +98,28 @@ import { useFetchStore } from '~/store/fetchPost';
 definePageMeta({
       middleware: ["auth", "product-data-fetch"]
 })
+interface PostDetails {
+      category: string
+      description: string
+      id: number
+      image: string
+      price: number
+      rating: {
+            rate: number
+            count: number
+      }
+      title: string
+      quantity: number
+}
 
 const fetchStore = useFetchStore()
 const page = ref(0)
 const { addCartItem } = useCartStore()
 
+const addInCartStore = (product: PostDetails)=>{
+      product.quantity = 1;
+      addCartItem(product)
+}
 
 /** computed property to get product data */
 const products = computed(() => fetchStore.productsData.slice(page.value, page.value + 6))

@@ -55,17 +55,15 @@
                                                 Size:</h2>
                                           <div class="flex flex-wrap -mx-2 -mb-2">
                                                 <button
-                                                      class="py-1 mb-2 mr-1 border w-11 hover:border-blue-400 dark:border-gray-400 hover:text-blue-600 dark:hover:border-gray-300 dark:text-gray-400">XL
-                                                </button>
-                                                <button
-                                                      class="py-1 mb-2 mr-1 border w-11 hover:border-blue-400 hover:text-blue-600 dark:border-gray-400 dark:hover:border-gray-300 dark:text-gray-400">S
+                                                      class="py-1 mb-2 mr-1 border w-11 hover:border-blue-400 dark:border-gray-400 hover:text-blue-600 dark:hover:border-gray-300 dark:text-gray-400">S
                                                 </button>
                                                 <button
                                                       class="py-1 mb-2 mr-1 border w-11 hover:border-blue-400 hover:text-blue-600 dark:border-gray-400 dark:hover:border-gray-300 dark:text-gray-400">M
                                                 </button>
                                                 <button
-                                                      class="py-1 mb-2 mr-1 border w-11 hover:border-blue-400 hover:text-blue-600 dark:border-gray-400 dark:hover:border-gray-300 dark:text-gray-400">XS
+                                                      class="py-1 mb-2 mr-1 border w-11 hover:border-blue-400 hover:text-blue-600 dark:border-gray-400 dark:hover:border-gray-300 dark:text-gray-400">L
                                                 </button>
+                                                
                                           </div>
                                     </div>
                                     <!-- quantity select container -->
@@ -74,13 +72,15 @@
                                                 class="w-full text-xl font-semibold text-gray-700 dark:text-gray-400">Quantity</label>
                                           <div class="relative flex flex-row w-full h-10 mt-4  rounded-lg">
                                                 <button
+                                                      @click="decrese()"
                                                       class="w-20 h-full text-gray-600  rounded-l outline-none cursor-pointer dark:hover:bg-gray-700 dark:text-gray-400 hover:text-gray-700 dark:bg-gray-900 hover:bg-gray-400">
                                                       <span class="m-auto text-2xl font-thin">-</span>
                                                 </button>
                                                 <input type="number"
                                                       class="flex items-center w-full font-semibold text-center text-gray-700 placeholder-gray-700 bg-gray-300 outline-none dark:text-gray-400 dark:placeholder-gray-400 dark:bg-gray-900 text-md "
-                                                      value="1">
+                                                      :value="qnt">
                                                 <button
+                                                      @click="increse()"
                                                       class="w-20 h-full text-gray-600  rounded-r outline-none cursor-pointer dark:hover:bg-gray-700 dark:text-gray-400 dark:bg-gray-900 hover:text-gray-700 hover:bg-gray-400">
                                                       <span class="m-auto text-2xl font-thin">+</span>
                                                 </button>
@@ -90,7 +90,7 @@
                                     <div class="flex flex-wrap items-center -mx-4 ">
                                           <div class="w-full px-4 mb-4 lg:w-1/2 lg:mb-0">
                                                 <button
-                                                      @click="addCartItem(productsData)"
+                                                      @click="addCartItem(productsData , qnt )"
                                                       class="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
                                                       Add to Cart
                                                 </button>
@@ -119,7 +119,17 @@ definePageMeta({
 
 const route = useRoute()
 const productStore = useFetchStore()
-const { addCartItem } = useCartStore()
+const { addCartItem , addQnt , subQnt } = useCartStore()
+const qnt = ref(1)
+
+function increse(){
+      qnt.value += 1
+}
+function decrese(){
+      if(qnt.value !== 1){
+            qnt.value -= 1
+      }
+}
 
 const productsData = toRaw(productStore.productsData)[route.params.id - 1]
 
