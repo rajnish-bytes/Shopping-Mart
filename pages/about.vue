@@ -32,7 +32,7 @@
         <img
           className="object-cover object-center w-3/4 mb-10 border shadow-md g327"
           alt="Placeholder Image"
-          src="~assets/img/placeholder.png"
+          src="~/img/placeholder.png"
         >
       </div>
       <h2 className="pt-40 mb-1 text-2xl font-semibold text-gray-600 tracking-tighter text-center  lg:text-7xl md:text-6xl">
