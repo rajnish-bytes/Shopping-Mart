@@ -2,9 +2,9 @@
     <VitePwaManifest/>
     <!-- NavBar -->
     <nav
-        class="fixed z-10 h-16 w-screen px-20 flex place-content-between items-center bg-gray-100/90 backdrop-filter backdrop-blur-sm">
+        class="fixed z-10 h-16 w-full md:px-20 flex place-content-between items-center bg-gray-100/90 backdrop-filter backdrop-blur-sm">
         <!-- SignUp && Login Button -->
-        <div class="ml-32">
+        <div class="md:ml-32">
             <NuxtLink to="/login">
                 <button
                     class="text-white bg-gradient-to-r from-blue-400  to-blue-700 focus:ring-4 focus:ring-blue-300 font-medium  "
@@ -35,7 +35,7 @@
             </li>
         </ul>
         <!-- Language Selector -->
-        <div class="mr-32">
+        <div class="md:mr-32">
             <select name="language" v-model="locale">
                 <option value="en">English</option>
                 <option value="hi">हिंदी</option>

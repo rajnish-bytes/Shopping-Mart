@@ -12,12 +12,10 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/i18n',
-    // '@nuxtjs/pwa',
     '@vite-pwa/nuxt'
   ],
   i18n: {
-    // vueI18n: '~/plugins/i18n.config.ts'
-    // legacy: false,
+  
     lazy: true,
     langDir: "locales",
     strategy: "no_prefix",
@@ -38,11 +36,6 @@ export default defineNuxtConfig({
     defaultLocale: "hi"
   },
 
-  // pwa: {
-  //   manifest: {
-  //     lang: "en",
-  //   },
-  // },
   // PWA config
   pwa: {
     manifest: {
@@ -79,5 +72,6 @@ export default defineNuxtConfig({
       enabled: true,
       type: 'module'
     }
-  }
+  },
+  
 })
