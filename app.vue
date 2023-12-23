@@ -1,4 +1,5 @@
 <template>
+    <VitePwaManifest/>
     <!-- NavBar -->
     <nav
         class="fixed z-10 h-16 w-screen px-20 flex place-content-between items-center bg-gray-100/90 backdrop-filter backdrop-blur-sm">
@@ -44,7 +45,7 @@
     </nav>
 
     <!-- Pages Load Box -->
-    <div class=" h-screen ">
+    <div class=" h-full ">
 
             <NuxtPage />
 

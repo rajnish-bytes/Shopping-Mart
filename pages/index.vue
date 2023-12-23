@@ -5,12 +5,11 @@
 
             <div class="h-screen w-1/2  center flex-col ">
                   <h1 class="text-5xl font-extrabold font-serif my-10 ">{{ $t('welcome') }} <span class="text-blue-500">{{
-                                                name }}</span></h1>
+                        name }}</span></h1>
                   <div>
-                        <p class="text-xl font-mono m-10 ">{{ $t(`Our shopping page is here to help you to choose the right
-                              one - you don't need to give an effort.`)}}</p>
+                        <p class="text-xl font-mono m-10 ">{{ $t(`Our shopping page is here to help you to choose the right one - you don't need to give an effort.`) }}</p>
                         <button @click="nevigate"
-                              class="text-white bg-gradient-to-r from-blue-400  to-blue-700 focus:ring-4 focus:ring-blue-300 font-medium ml-10">{{$t(`EXPLORE`)}}</button>
+                              class="text-white bg-gradient-to-r from-blue-400  to-blue-700 focus:ring-4 focus:ring-blue-300 font-medium ml-10">{{ $t(`EXPLORE`) }}</button>
                   </div>
             </div>
             <div class="h-screen w-1/2  center">
@@ -23,9 +22,9 @@
 import { useUserAuthStore } from "~/store/userAuth";
 
 const userDetail = useUserAuthStore()
-const name = computed(()=> userDetail.loginUserName.toUpperCase() )
+const name = computed(() => userDetail.loginUserName.toUpperCase())
 
-function nevigate(){
+function nevigate() {
       return navigateTo('/posts')
 }
 </script>

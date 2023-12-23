@@ -12,6 +12,8 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/i18n',
+    // '@nuxtjs/pwa',
+    '@vite-pwa/nuxt'
   ],
   i18n: {
     // vueI18n: '~/plugins/i18n.config.ts'
@@ -35,4 +37,47 @@ export default defineNuxtConfig({
     ],
     defaultLocale: "hi"
   },
+
+  // pwa: {
+  //   manifest: {
+  //     lang: "en",
+  //   },
+  // },
+  // PWA config
+  pwa: {
+    manifest: {
+      name: "shopping mart",
+      short_name: "shopping mart",
+      description: "testing nuxt3 pwa",
+      icons: [
+        {
+          src:  'icons/icons8-apple-logo-64.png',
+          sizes: '64x64',
+          type: 'image/png'
+        },
+        {
+          src:  'icons/icons8-apple-logo-144.png',
+          sizes: '144x144',
+          type: 'image/png'
+        },
+        {
+          src:  'icons/icons8-apple-logo-192.png',
+          sizes: '192x192',
+          type: 'image/png'
+        },
+        {
+          src:  'icons/icons8-apple-logo-512.png',
+          sizes: '512x512',
+          type: 'image/png'
+        },
+      ]
+    },
+    // workbox: {
+    //   navigateFallback: '/'
+    // },
+    // devOptions:{
+    //   enabled: true,
+    //   type: 'module'
+    // }
+  }
 })

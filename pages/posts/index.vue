@@ -1,9 +1,9 @@
 <template>
-      <div>
-            <ul v-if="products.length" class="h-screen center flex-wrap">
+      <div class="bg-gradient-to-r from-[#dbedfa] to-[#faf4ff]">
+            <ul v-if="products.length" class="h-full center flex-wrap">
                   <!-- product card -->
                   <li v-for="product in products" :key="product.id"
-                        class="relative mt-32 mx-32 w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-md effect"
+                        class="relative mt-32 mx-32 w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg effect"
                         >
                               <!-- product image -->
                               <NuxtLink :to="`/posts/${product.id}`" class="center">
@@ -39,7 +39,7 @@
                                           </p>
                                           <button
                                                 class="flex items-center rounded-md bg-slate-900 px-3 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
-                                                @click="addInCartStore(product)" >
+                                                @click="addCartItem(product , 1)" >
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-6 w-6" fill="none"
                                                       viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
                                                       >
@@ -60,11 +60,11 @@
                   Loading...
             </div>
 
-      </div>
+      
       <!-- END -->
-      <hr class="mt-80">
+      <!-- <hr class=""> -->
       <!-- Pagination -->
-      <div class="center h-1/5 -mt-14 justify-between mx-44 text-lg">
+      <div class="center m-10 py-10 bg-bl justify-between  text-lg">
 
             <div class="flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer">
                   <p @click="page -= 6" class=" ml-3 font-medium leading-none ">Previous</p>
@@ -89,6 +89,7 @@
             </div>
       </div>
       <!-- END -->
+</div>
 </template>
 
 <script setup lang="ts">
@@ -116,10 +117,10 @@ const fetchStore = useFetchStore()
 const page = ref(0)
 const { addCartItem } = useCartStore()
 
-const addInCartStore = (product: PostDetails)=>{
-      product.quantity = 1;
-      addCartItem(product)
-}
+// const addInCartStore = (product: PostDetails)=>{
+      
+//       addCartItem(product ,1)
+// }
 
 /** computed property to get product data */
 const products = computed(() => fetchStore.productsData.slice(page.value, page.value + 6))

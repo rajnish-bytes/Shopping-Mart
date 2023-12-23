@@ -13,6 +13,8 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/i18n": "^8.0.0-rc.11",
+    "@nuxtjs/pwa": "^3.3.5",
+    "@vite-pwa/nuxt": "^0.3.6",
     "autoprefixer": "^10.4.16",
     "nuxt": "^3.8.2",
     "postcss": "^8.4.32",

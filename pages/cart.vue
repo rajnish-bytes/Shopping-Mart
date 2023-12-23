@@ -1,5 +1,5 @@
 <template>
-      <div class="h-screen bg-gray-100 pt-20">
+      <div class="h-full bg-gray-100 pt-20">
             <!-- heading -->
             <h1 class="mb-10 text-center text-2xl font-bold">Cart Items</h1>
             <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
@@ -45,7 +45,7 @@
 
                   </div>
                   <!-- Sub total -->
-                  <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
+                  <div class="bg-fixed mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
                         <div class="mb-2 flex justify-between">
                               <p class="text-gray-700">Subtotal</p>
                               <p class="text-gray-700">${{ subtotal }}</p>
@@ -66,6 +66,12 @@
                               class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check
                               out
                         </button>
+                        <button
+                
+                type="button"
+                class="bg-blue-400 fixed bottom-16 rounded-full grid place-items-center transition-all duration-300 right-[20px] z-90 w-[48px] h-[48px]"
+
+              ></button>
                   </div>
             </div>
       </div>
