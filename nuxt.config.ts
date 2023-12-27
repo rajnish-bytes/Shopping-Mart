@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt'
   ],
   i18n: {
-  
+
     lazy: true,
     langDir: "locales",
     strategy: "no_prefix",
@@ -44,22 +44,22 @@ export default defineNuxtConfig({
       description: "testing nuxt3 pwa",
       icons: [
         {
-          src:  'icons/icons8-apple-logo-64.png',
+          src: 'icons/icons8-apple-logo-64.png',
           sizes: '64x64',
           type: 'image/png'
         },
         {
-          src:  'icons/icons8-apple-logo-144.png',
+          src: 'icons/icons8-apple-logo-144.png',
           sizes: '144x144',
           type: 'image/png'
         },
         {
-          src:  'icons/icons8-apple-logo-192.png',
+          src: 'icons/icons8-apple-logo-192.png',
           sizes: '192x192',
           type: 'image/png'
         },
         {
-          src:  'icons/icons8-apple-logo-512.png',
+          src: 'icons/icons8-apple-logo-512.png',
           sizes: '512x512',
           type: 'image/png'
         },
@@ -68,10 +68,9 @@ export default defineNuxtConfig({
     workbox: {
       navigateFallback: '/'
     },
-    devOptions:{
+    devOptions: {
       enabled: true,
-      type: 'module'
     }
   },
-  
+
 })

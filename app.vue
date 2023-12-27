@@ -1,5 +1,5 @@
 <template>
-    <VitePwaManifest/>
+    <NuxtPwaManifest />
     <!-- NavBar -->
     <nav
         class="fixed z-10 h-16 w-full md:px-20 flex place-content-between items-center bg-gray-100/90 backdrop-filter backdrop-blur-sm">
@@ -20,7 +20,7 @@
 
         </div>
         <!-- Navigation List -->
-        <ul class="space-x-10 ">
+        <ul class="hidden md:block space-x-10 ">
             <li class="inline hover:border-blue-400 hover:border-b-2 ">
                 <NuxtLink to="/">{{ $t('Home') }}</NuxtLink>
             </li>
@@ -34,8 +34,41 @@
                 <NuxtLink to="/about">{{ $t('About') }}</NuxtLink>
             </li>
         </ul>
+
+        <div class="md:hidden">
+        <!-- Mobile menu button -->
+        <button @click="toggleMobileMenu" class="text-black focus:outline-none">
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div
+        v-if="isMobileMenuOpen"
+        class="md:hidden absolute top-16 left-0 right-0 bg-blue-500 p-4"
+      >
+        <!-- <a class="text-white block mb-2" href="#">Home</a> -->
+        <NuxtLink to="/" class="text-white block mb-2" >{{ $t('Home') }}</NuxtLink>
+        <NuxtLink to="/posts" class="text-white block mb-2" >{{ $t('Posts') }}</NuxtLink>
+        <NuxtLink to="/cart" class="text-white block mb-2" >Cart</NuxtLink>
+        <NuxtLink to="/about" class="text-white block mb-2" >{{ $t('About') }}</NuxtLink>
+       
+      </div>
         <!-- Language Selector -->
-        <div class="md:mr-32">
+        <div class="md:mr-32 md:block hidden">
             <select name="language" v-model="locale">
                 <option value="en">English</option>
                 <option value="hi">हिंदी</option>
@@ -49,6 +82,7 @@
 
             <NuxtPage />
 
+            <Footer v-if="$route.path !== '/login'" />
     </div>
 </template>
 
@@ -57,6 +91,7 @@
 import { getAuth } from "@firebase/auth";
 import { useUserAuthStore } from "~/store/userAuth";
 
+const isMobileMenuOpen = ref(false);
 const Loginuser = useUserAuthStore()
 const { locale } = useI18n()
 
@@ -95,13 +130,15 @@ onMounted(() => {
     })
 })
 
-
+function toggleMobileMenu() {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value;
+}
 </script>
 
 <style>
-.router-link-active {
+/* .router-link-active {
     font-weight: 400;
     color: rgb(69, 162, 255);
     border-bottom: solid 2px;
-}
+} */
 </style>

@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth()
 
 // Import the functions you need for UserAuth
-import { useUserAuthStore } from "~/store/userAuth";
+import { useUserAuthStore } from "../store/userAuth";
 
 
 /** New Registration In Shopping Mart */
