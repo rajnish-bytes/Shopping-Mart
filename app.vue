@@ -1,27 +1,21 @@
 <template>
     <VitePwaManifest />
-    <!-- NavBar -->
-    <Navbar v-if="$route.path !== '/login'"/>
+    
+    <NuxtLayout>
 
-    <!-- Pages Load Box -->
-    <div class=" h-full p-1 sm:ml-64">
+        <NuxtPage />
 
-            <NuxtPage />
-
-            <Footer v-if="$route.path !== '/login'" />
-    </div>
+    </NuxtLayout>
 </template>
 
 
 <script setup>
 import { getAuth } from "@firebase/auth";
 import { useUserAuthStore } from "~/store/userAuth";
-import Navbar from "./components/navbar.vue";
 
-const Loginuser = useUserAuthStore()
-const { locale } = useI18n()
 
 onMounted(() => {
+    const Loginuser = useUserAuthStore()
     Loginuser.setLoginData()
     const route = useRoute()
 

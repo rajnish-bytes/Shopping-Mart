@@ -39,6 +39,7 @@ export default defineNuxtConfig({
   // PWA config
   pwa: {
     registerType: 'autoUpdate',
+    strategies: 'generateSW',
     manifest: {
       name: "shopping mart",
       short_name: "shopping mart",
@@ -67,12 +68,15 @@ export default defineNuxtConfig({
       ]
     },
     workbox: {
-      globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
-    },
+      // Only precache these files - html should be excluded
+      globPatterns: ['**/*.{js,css}'],
+  
+      // Don't fallback on document based (e.g. `/some-page`) requests
+      // Even though this says `null` by default, I had to set this specifically to `null` to make it work
+      navigateFallback: '/' ,
+  },
     devOptions: {
       enabled: true,
-      suppressWarnings: true,
-      navigateFallbackAllowlist: [/^\/$/],
       type: 'module',
     },
   },

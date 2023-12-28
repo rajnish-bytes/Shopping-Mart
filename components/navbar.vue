@@ -87,9 +87,10 @@
             </div>
       </nav>
 <!-- Sidebar Navigation -->
+<Transition name="list">
       <aside id="logo-sidebar"
             v-if="mobileSideBar"
-            class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+            class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700"
             aria-label="Sidebar">
             <!-- Nav list -->
             <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
@@ -186,7 +187,7 @@
                   </ul>
             </div>
       </aside>
-
+</Transition>
 </template>
     
 <script setup lang="ts">
@@ -208,3 +209,15 @@ function logoutUser() {
     return navigateTo("/login")
 }
 </script>
+
+<style scoped>
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  /* opacity: 0; */
+  transform: translateX(-100%);
+}
+</style>
