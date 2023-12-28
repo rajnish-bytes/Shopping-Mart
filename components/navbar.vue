@@ -38,6 +38,7 @@
                               <div class="flex items-center ms-3">
                                     <div>
                                           <button type="button"
+                                          @click="darkmod()"
                                                 class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                                                 aria-expanded="false" data-dropdown-toggle="dropdown-user">
                                                 <span class="sr-only">Open user menu</span>
@@ -90,10 +91,10 @@
 <Transition name="list">
       <aside id="logo-sidebar"
             v-if="mobileSideBar"
-            class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+            class="fixed top-0 left-0 z-40 w-64 h-screen pt-16 backdrop-filter backdrop-blur-lg bg-gray-100/60 bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700"
             aria-label="Sidebar">
             <!-- Nav list -->
-            <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+            <div class="h-full px-3 pb-4 overflow-y-auto backdrop-filter backdrop-blur-lg bg-gray-100/0 bg-white dark:bg-gray-800">
                   <ul class="space-y-2 font-medium">
                         <!-- HomePage -->
                         <li>
@@ -208,6 +209,12 @@ function logoutUser() {
     useLogoutUser()
     return navigateTo("/login")
 }
+
+let isdark = ref(false)
+  function darkmod(){
+    document.documentElement.classList.toggle('dark')
+    isdark.value = !isdark.value;
+  }
 </script>
 
 <style scoped>
