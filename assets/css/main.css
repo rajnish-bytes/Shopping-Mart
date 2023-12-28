@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-      button {
+      .btn {
             @apply px-4 py-1 border rounded-2xl drop-shadow-btn 
       }
 

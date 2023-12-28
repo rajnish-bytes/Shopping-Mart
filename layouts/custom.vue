@@ -1,7 +1,7 @@
 <template>
-
-      <div class="min-h-screen w-screen flex flex-col-reverse md:center md:flex-row">
-            <div class="min-h-screen w-screen center hidden sm:flex">
+      <Topnavbar />
+      <div class="min-h-full w-screen flex flex-col-reverse md:center md:flex-row">
+            <div class="min-h-full w-screen center hidden sm:flex bg-white">
                   <img v-if="route.path === '/login'"
                         src="/img/login.jpg" 
                         alt="Welcome to the login Page"
@@ -12,9 +12,10 @@
                         class="w-full h-full object-cover" />
             </div>
             <div class="min-h-screen w-screen bg-gradient-to-b from-[#c2e6ff] to-[#0844f4] center">
-                  <slot />
+                  <slot/>
             </div>
       </div>
+      <Footer />
 </template>
 
 <script setup>
