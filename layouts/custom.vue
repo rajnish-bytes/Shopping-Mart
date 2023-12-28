@@ -1,5 +1,4 @@
 <template>
-
       <div class="min-h-screen w-screen flex flex-col-reverse md:center md:flex-row">
             <div class="min-h-screen w-screen center hidden sm:flex">
                   <img v-if="route.path === '/login'"

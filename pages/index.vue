@@ -9,7 +9,7 @@
                   <div>
                         <p class="text-xl font-mono m-10 ">{{ $t(`Our shopping page is here to help you to choose the right one - you don't need to give an effort.`) }}</p>
                         <button @click="nevigate"
-                              class="text-white bg-gradient-to-r from-blue-400  to-blue-700 focus:ring-4 focus:ring-blue-300 font-medium ml-10 md:text-l text-xl">{{ $t(`EXPLORE`) }}</button>
+                              class="text-white bg-gradient-to-r from-blue-400  to-blue-700 focus:ring-4 focus:ring-blue-300 font-medium ml-10 md:text-l text-xl btn ">{{ $t(`EXPLORE`) }}</button>
                   </div>
             </div>
             <div class="h-full md:w-1/2 w-full  center">

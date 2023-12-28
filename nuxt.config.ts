@@ -38,6 +38,7 @@ export default defineNuxtConfig({
 
   // PWA config
   pwa: {
+    registerType: 'autoUpdate',
     manifest: {
       name: "shopping mart",
       short_name: "shopping mart",
@@ -66,11 +67,14 @@ export default defineNuxtConfig({
       ]
     },
     workbox: {
-      navigateFallback: '/'
+      globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
     },
     devOptions: {
       enabled: true,
-    }
+      suppressWarnings: true,
+      navigateFallbackAllowlist: [/^\/$/],
+      type: 'module',
+    },
   },
 
 })
