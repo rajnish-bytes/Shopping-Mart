@@ -1,5 +1,5 @@
 <template>
-      <div id="controls-carousel" class="relative w-full bg-gray-400 mt-14" data-carousel="static">
+      <div id="controls-carousel" class="relative w-full bg-gray-400 mt-14 shadow-lg shadow-gray-600 drop-shadow-md" data-carousel="static">
             <!-- Carousel wrapper -->
             <div class="relative h-56 overflow-hidden rounded-lg md:h-96 ">
                   <!-- Items -->

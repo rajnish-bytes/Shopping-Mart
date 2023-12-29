@@ -210,7 +210,7 @@
 import { useUserAuthStore } from "~/store/userAuth";
 import { useCartStore } from '~/store/cartStore';
 
-const mobileSideBar = ref(true)
+const mobileSideBar = ref(false)
 const Loginuser = useUserAuthStore()
 const cartItems = useCartStore()
 const { locale } = useI18n()

@@ -1,6 +1,6 @@
 <template>
       <ImageSlider />
-      <div class="h-full w-full center flex-col md:center md:flex-row ">
+      <div class="h-full w-full -mt-16 center flex-col md:center md:flex-row ">
 
             <div class="h-full md:w-1/2 w-full mt-16 center flex-col bg-gradient-to-b from-[#68bbf6] to-[#f8f9ff] md:bg-none">
                   <h1 class="text-5xl font-extrabold font-serif my-10 ">{{ $t('welcome') }} <span class="text-blue-500">{{
