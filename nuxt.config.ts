@@ -16,9 +16,8 @@ export default defineNuxtConfig({
   ],
   i18n: {
 
-    lazy: true,
-    langDir: "locales",
-    strategy: "no_prefix",
+    strategy: "prefix",
+    defaultLocale: "hi",
     locales: [
       {
         code: "en",
@@ -33,7 +32,13 @@ export default defineNuxtConfig({
         file: "hi.json",
       },
     ],
-    defaultLocale: "hi"
+    lazy: true,
+    langDir: "locales",
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      alwaysRedirect: true,
+    }
   },
 
   // PWA config
