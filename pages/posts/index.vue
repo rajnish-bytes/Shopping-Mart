@@ -3,7 +3,7 @@
             <ul v-if="products.length" class="h-full center flex-wrap">
                   <!-- product card -->
                   <li v-for="product in products" :key="product.id"
-                        class="relative mt-32 mx-32 w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg effect"
+                        class="relative mt-32 sm:mx-32 mx-10 w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg effect"
                         >
                               <!-- product image -->
                               <NuxtLink :to="`/posts/${product.id}`" class="center">
@@ -56,8 +56,16 @@
                   </li>
             </ul>
             <!-- product card loading state -->
-            <div v-else>
-                  Loading...
+            <div v-else class="h-full center flex-wrap mt-14" >
+
+                  <div v-for="cardSkeleton in 6" class="flex flex-col m-8 rounded shadow-md w-60 sm:w-80 animate-pulse h-96">
+                        <div class="h-48 rounded-t dark:bg-gray-700 bg-gray-300"></div>
+                        <div class="flex-1 px-4 py-8 space-y-4 sm:p-8 dark:bg-gray-900 bg-gray-100">
+                              <div class="w-full h-6 rounded dark:bg-gray-700 bg-gray-200"></div>
+                              <div class="w-full h-6 rounded dark:bg-gray-700 bg-gray-200"></div>
+                              <div class="w-3/4 h-6 rounded dark:bg-gray-700 bg-gray-200"></div>
+                        </div>
+                  </div>
             </div>
 
       
@@ -116,11 +124,6 @@ interface PostDetails {
 const fetchStore = useFetchStore()
 const page = ref(0)
 const { addCartItem } = useCartStore()
-
-// const addInCartStore = (product: PostDetails)=>{
-      
-//       addCartItem(product ,1)
-// }
 
 /** computed property to get product data */
 const products = computed(() => fetchStore.productsData.slice(page.value, page.value + 6))
