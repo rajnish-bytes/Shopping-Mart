@@ -13,10 +13,11 @@
       "Password": "Password",
       "Remember me": "Remember me",
       "Forgot your password?": "Forgot your password?",
-      "Sign in": "Sign in",
+      "Sign In": "Sign in",
       "Last Name": "Last Name",
       "First Name": "First Name",
       "Create new account": "Create new account",
       "Or": "Or",
-      "Sign Up": "Sign Up"
+      "Sign Up": "Sign Up",
+      "Users": "Users"
 }
