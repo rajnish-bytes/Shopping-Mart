@@ -1,6 +1,6 @@
 <template>
       <!-- home page -->
-      <div class="md:px-20 h-full w-full mt-14">
+      <div class="md:px-20 h-full w-full ">
             <!-- top welcome banner -->
             <div class="relative h-64 rounded-b-lg bg-cover bg-center bg-no-repeat shadow-lg ">
                   <img src="/img/homePagebanner.jpg" alt="" class="object-contain h-64 w-full">
@@ -17,7 +17,7 @@
             <div
                   class="mt-10 flex flex-col items-start justify-center space-y-4 py-8 px-4 sm:flex-row sm:space-y-0 md:justify-between lg:px-0">
                   <div class="max-w-lg">
-                        <h1 class="text-2xl font-bold text-gray-800">Welcome {{ name }}</h1>
+                        <h1 class="text-3xl font-bold text-gray-800">Welcome <span class="text-purple-500 underline">{{ name }}</span></h1>
                         <p class="mt-2 text-gray-600">{{ $t(`Our shopping page is here to help you to choose the right one - you don't need to give an effort.`) }}</p>
                   </div>
 
@@ -26,7 +26,7 @@
             <main
                   class="grid grid-cols-2 gap-x-6 gap-y-10 px-2 pb-20 sm:grid-cols-3 sm:px-8 lg:mt-16 lg:grid-cols-3 lg:gap-x-10 lg:px-20">
                   <!-- Items -->
-                  <article v-for="item, i in categorie.categorieItems" :key="i" class="relative">
+                  <article v-for="item, i in categorieItems" :key="i" class="relative">
                         <div class="aspect-square overflow-hidden">
                               <img class="h-full w-full object-cover transition-all duration-300 group-hover:scale-125"
                                     :src="item.image" alt="" />
@@ -63,6 +63,7 @@ definePageMeta({
 
 const userDetail = useUserAuthStore()
 const categorie = useCategorieStore()
+const categorieItems = computed(()=> categorie.categorieItems.slice(0,6))
 const name = computed(() => userDetail.loginUserName.toUpperCase())
 
 

@@ -24,25 +24,6 @@ export const useCategorieStore = defineStore('Categorieproduct', () => {
             categorieList.value = data.value as unknown as categorieData[]
       
       }
-      // const addCartItem = (item: PostDetails , qnt?: number)=>{
-      //       if(cartList.value.includes(item)){
-      //             return alert("already")
-      //       }
-      //       item.quantity = qnt as number
-      //       cartList.value.push(item)
-      // }
-      // const removeCartItem =(index: number)=>{
-      //       cartList.value.splice(index, 1)
-      // }
-
-      // const addQnt = (index:number)=>{
-      //       cartItems.value[index].quantity += 1
-      // }
-      // const subQnt = (index:number)=>{
-      //       if(cartItems.value[index].quantity !== 1){
-      //             cartItems.value[index].quantity -= 1
-      //       }
-      // }
 
       return {
             categorieItems ,
