@@ -1,27 +1,70 @@
 <template>
-      <ImageSlider />
-      <div class="h-full w-full -mt-16 center flex-col md:center md:flex-row ">
-
-            <div class="h-full md:w-1/2 w-full mt-16 center flex-col bg-gradient-to-b from-[#68bbf6] to-[#f8f9ff] md:bg-none">
-                  <h1 class="text-5xl font-extrabold font-serif my-10 ">{{ $t('welcome') }} <span class="text-blue-500">{{
-                        name }}</span></h1>
-                  <div>
-                        <p class="text-xl font-mono m-10 ">{{ $t(`Our shopping page is here to help you to choose the right one - you don't need to give an effort.`) }}</p>
-                        <button @click="nevigate"
-                              class="text-white bg-gradient-to-r from-blue-400  to-blue-700 focus:ring-4 focus:ring-blue-300 font-medium ml-10 md:text-l text-xl btn ">{{ $t(`EXPLORE`) }}</button>
+      <!-- home page -->
+      <div class="md:px-20 h-full w-full mt-14">
+            <!-- top welcome banner -->
+            <div class="relative h-64 rounded-b-lg bg-cover bg-center bg-no-repeat shadow-lg ">
+                  <img src="/img/homePagebanner.jpg" alt="" class="object-contain h-64 w-full">
+                  <div class="px-4 pt-8 pb-10">
+                        <!-- user image -->
+                        <div class="absolute inset-x-0 -bottom-10 mx-auto w-36 rounded-full border-8 border-white shadow-lg">
+                              <span
+                                    class="absolute right-0 m-3 h-3 w-3 rounded-full bg-green-500 ring-2 ring-green-300 ring-offset-2"></span>
+                              <img class="mx-auto h-auto w-full rounded-full" src="/img/placeholder.png" alt="" />
+                        </div>
                   </div>
             </div>
-            <div class="h-full md:w-1/2 w-full  center">
-                  <img src=" /img/home.jpg" alt="wildlife">
+            <!-- dicription area -->
+            <div
+                  class="mt-10 flex flex-col items-start justify-center space-y-4 py-8 px-4 sm:flex-row sm:space-y-0 md:justify-between lg:px-0">
+                  <div class="max-w-lg">
+                        <h1 class="text-2xl font-bold text-gray-800">Welcome {{ name }}</h1>
+                        <p class="mt-2 text-gray-600">{{ $t(`Our shopping page is here to help you to choose the right one - you don't need to give an effort.`) }}</p>
+                  </div>
+
             </div>
+            <!-- Items Categorie -->
+            <main
+                  class="grid grid-cols-2 gap-x-6 gap-y-10 px-2 pb-20 sm:grid-cols-3 sm:px-8 lg:mt-16 lg:grid-cols-3 lg:gap-x-10 lg:px-20">
+                  <!-- Items -->
+                  <article v-for="item, i in categorie.categorieItems" :key="i" class="relative">
+                        <div class="aspect-square overflow-hidden">
+                              <img class="h-full w-full object-cover transition-all duration-300 group-hover:scale-125"
+                                    :src="item.image" alt="" />
+                        </div>
+                        <div class="absolute top-0 m-1 rounded-full bg-white">
+                              <p
+                                    class="rounded-full bg-black p-1 text-[10px] font-bold uppercase tracking-wide text-white sm:py-1 sm:px-3">
+                                    Sale</p>
+                        </div>
+                        <div class="mt-4 flex items-start justify-between">
+                              <div class="">
+                                    <h3 class="text-xs font-semibold sm:text-sm md:text-base">
+                                          <a href="#" title="" class="">
+                                                {{ item.name }}
+                                                <span class="absolute" aria-hidden="true"></span>
+                                          </a>
+                                    </h3>
+                              </div>
+
+                        </div>
+                  </article>
+
+            </main>
       </div>
 </template>
 
 <script setup>
 import { useUserAuthStore } from "~/store/userAuth";
+import { useCategorieStore } from "~/store/categorieStore";
+
+definePageMeta({
+      middleware: 'categorie-data-fetch'
+})
 
 const userDetail = useUserAuthStore()
+const categorie = useCategorieStore()
 const name = computed(() => userDetail.loginUserName.toUpperCase())
+
 
 function nevigate() {
       return navigateTo('/posts')
