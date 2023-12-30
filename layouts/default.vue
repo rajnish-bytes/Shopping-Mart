@@ -3,7 +3,7 @@
       <Navbar />
 
       <!-- Pages Load Box -->
-      <div class=" h-full p-0 sm:ml-64">
+      <div class=" h-full p-0 md:ml-64">
             <!-- NuxtPages -->
             <slot />
             <!-- Footer -->

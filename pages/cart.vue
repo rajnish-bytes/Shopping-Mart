@@ -42,7 +42,7 @@
                         </div>
 
                         <!-- when cart is empty -->
-                        <div v-else
+                        <!-- <div v-else
                               class="flex flex-col w-full gap-5 p-2 mx-auto bg-white shadow-lg select-none sm:p-4 sm:h-64 rounded-2xl sm:flex-row ">
                               <div class="bg-gray-200 h-52 sm:h-full sm:w-72 rounded-xl animate-pulse">
                               </div>
@@ -68,7 +68,9 @@
                                           </div>
                                     </div>
                               </div>
-                        </div>
+                        </div> -->
+
+                        <EmptyCart v-else />
                   </div>
                   <!-- Sub total -->
                   <div class="bg-fixed mt-6 h-full rounded-lg border bg-white p-6 pb-10 shadow-md md:mt-0 md:w-1/3">

@@ -30,7 +30,7 @@ export const useFetchStore = defineStore('postData', () => {
       }
 
       return {
-            productsData: productsData,
+            productsData,
             getData
       }
 })

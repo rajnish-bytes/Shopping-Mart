@@ -107,19 +107,6 @@ import { useFetchStore } from '~/store/fetchPost';
 definePageMeta({
       middleware: ["auth", "product-data-fetch"]
 })
-interface PostDetails {
-      category: string
-      description: string
-      id: number
-      image: string
-      price: number
-      rating: {
-            rate: number
-            count: number
-      }
-      title: string
-      quantity: number
-}
 
 const fetchStore = useFetchStore()
 const page = ref(0)
