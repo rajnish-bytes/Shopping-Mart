@@ -4,10 +4,11 @@ interface PostDetails {
       category: string
       description: string
       id: number
-      image: string[]
+      images: string[]
       price: number
       rating: number
       title: string
+      quantity: number
       stock: number
       brand: string
       thumbnail : string
