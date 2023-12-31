@@ -63,7 +63,7 @@ definePageMeta({
 
 const userDetail = useUserAuthStore()
 const categorie = useCategorieStore()
-const categorieItems = computed(()=> categorie.categorieItems.slice(0,6))
+const categorieItems = computed(()=> categorie.categorieItems)
 const name = computed(() => userDetail.loginUserName.toUpperCase())
 
 

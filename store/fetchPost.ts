@@ -4,33 +4,35 @@ interface PostDetails {
       category: string
       description: string
       id: number
-      image: string
+      image: string[]
       price: number
-      rating: {
-            rate: number
-            count: number
-      }
+      rating: number
       title: string
-      quantity: number
+      stock: number
+      brand: string
+      thumbnail : string
+      discountPercentage : number
 }
 
 export const useFetchStore = defineStore('postData', () => {
       const posts = ref<PostDetails[]>([])            // State
-
-      const productsData = computed(() => posts.value)       // Getter
+      const FetchLimit = ref<number>(0)
+      const productsData = computed(() => posts.value)     // Getter
 
       /**
        *    getData function to fetch StoreApi
        */
       async function getData(): Promise<void> {
-
-            const { data } = await useAsyncData('storeData', () => $fetch('https://fakestoreapi.com/products') )
-
-            posts.value = data.value as unknown as PostDetails[]
+            const { data }  = await useAsyncData('storeData', () => $fetch(`https://dummyjson.com/products?skip=${FetchLimit.value}&limit=${24}`) ) 
+            posts.value.push( ...data.value.products )
       }
-
+      async function setFetchLimit(){
+            FetchLimit.value += 24
+            await getData()
+      }
       return {
             productsData,
-            getData
+            getData,
+            setFetchLimit
       }
 })

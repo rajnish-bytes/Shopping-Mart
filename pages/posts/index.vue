@@ -1,28 +1,28 @@
 <template>
       <div class="bg-gradient-to-r from-[#dbedfa] to-[#faf4ff]">
-            <ul v-if="products.length" class="h-full center flex-wrap">
+            <ul v-if="products.length" class="h-full w-full grid grid-cols-2 gap-x-6 gap-y-0 px-2 pb-0 sm:grid-cols-3 sm:px-8 lg:pt-16 lg:grid-cols-3 lg:gap-x-10 lg:px-10 ">
                   <!-- product card -->
                   <li v-for="product in products" :key="product.id"
-                        class="relative mt-32 sm:mx-32 mx-10 w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg effect"
+                        class="relative mt-10 sm:mx-0 w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg effect"
                         >
                               <!-- product image -->
                               <NuxtLink :to="`/posts/${product.id}`" class="center">
-                                    <img class="h-60 rounded-t-lg object-contain"
-                                          :src="product.image"
+                                    <img class="h-52 rounded-t-lg object-contain"
+                                          :src="product.thumbnail"
                                           alt="product image" />
                               </NuxtLink>
                               <span
                                     class="absolute top-0 left-0 w-28 translate-y-4 -translate-x-6 -rotate-45 bg-black text-center text-sm text-white">Sale</span>
                               <!-- product detailes -->
-                              <div class="mt-4 px-5 pb-5">
+                              <div class="mt-2 px-5 pb-5">
                                     <!-- product title -->
-                                    <NuxtLink :to="`/posts/${product.id}`" class="h-2"> 
-                                          <h5 class="text-xl font-semibold tracking-tight text-slate-900 overflow-hidden h-14">{{ product.title }}</h5>
+                                    <NuxtLink :to="`/posts/${product.id}`" class=""> 
+                                          <h5 class="text-xl font-semibold  text-slate-900 overflow-hidden h-14 ">{{ product.title }}</h5>
                                     </NuxtLink>
                                     <!-- product rating and star -->
                                     <div class="mt-2.5 mb-5 flex items-center">
                                           <span
-                                                class="mr-2 rounded bg-yellow-200 px-2.5 py-0.5 text-xs font-semibold">{{ product.rating.rate }}</span>
+                                                class="mr-2 rounded bg-yellow-200 px-2.5 py-0.5 text-xs font-semibold">{{ product.rating }}</span>
                                           <svg v-for="star in 5" aria-hidden="true" class="h-5 w-5 text-yellow-300" fill="currentColor"
                                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -32,13 +32,13 @@
                                           
                                     </div>
                                     <!-- product price and add to card container -->
-                                    <div class="flex items-center justify-between">
-                                          <p>
+                                    <div class="flex items-start sm:items-center justify-between  sm:flex-row flex-col ">
+                                          <p class="">
                                                 <span class="text-2xl font-bold text-slate-900">${{ product.price }}</span>
-                                                <span class="text-sm text-slate-900 line-through">${{ (product.price * 2.4).toFixed(2) }}</span>
+                                                <span class="text-sm text-slate-900 line-through">${{ (product.price * 1.4).toFixed(2) }}</span>
                                           </p>
                                           <button
-                                                class="flex items-center rounded-md bg-slate-900 px-3 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                                                class="flex items-center  rounded-md bg-slate-900  px-3 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
                                                 @click="addCartItem(product , 1)" >
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-6 w-6" fill="none"
                                                       viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
@@ -75,7 +75,7 @@
       <div class="center m-10 py-10 bg-bl justify-between  text-lg">
 
             <div class="flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer">
-                  <p @click="page -= 6" class=" ml-3 font-medium leading-none ">Previous</p>
+                  <p @click="page -= 22" class=" ml-3 font-medium leading-none ">Previous</p>
             </div>
             <div class="sm:flex hidden">
                   <p
@@ -93,7 +93,7 @@
             </div>
 
             <div class="flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer">
-                  <p @click="page += 6" class=" font-medium leading-none mr-3">Next</p>
+                  <p @click="set()" class=" font-medium leading-none mr-3">Next</p>
             </div>
       </div>
       <!-- END -->
@@ -105,18 +105,22 @@ import { useCartStore } from '~/store/cartStore';
 import { useFetchStore } from '~/store/fetchPost';
 
 definePageMeta({
-      middleware: ["auth", "product-data-fetch"]
+      middleware: [ "auth" ,"product-data-fetch"]
 })
 
 const fetchStore = useFetchStore()
 const page = ref(0)
 const { addCartItem } = useCartStore()
 
+async function set() {
+      await fetchStore.setFetchLimit()
+      page.value += 24
+}
 /** computed property to get product data */
-const products = computed(() => fetchStore.productsData.slice(page.value, page.value + 6))
-watch(page, () => {
-      if (page.value > 20) page.value -= 6
-      else if (page.value < 0) page.value += 6
+const products = computed(() => fetchStore.productsData.slice(page.value , page.value + 24))
+watchEffect( () => {
+      if (page.value > fetchStore.productsData.length) page.value -= 24
+      else if (page.value < 0) page.value += 24
 })
 
 

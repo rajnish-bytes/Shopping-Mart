@@ -6,7 +6,7 @@
                         <div class="w-full px-4 md:w-1/2 ">
                               <div class="sticky top-0  overflow-hidden ">
                                     <div class="relative mb-6 lg:mb-10 lg:h-2/4 ">
-                                          <img :src="productsData.image" alt="" class=" object-cover w-full lg:h-full ">
+                                          <img :src="productsData.thumbnail" alt="" class=" object-cover w-full lg:h-full ">
                                     </div>
 
                               </div>
@@ -35,7 +35,7 @@
                                                             </a>
                                                       </li>
                                                 </ul>
-                                                <p class="text-xs dark:text-gray-400 ">({{ productsData.rating.count }}
+                                                <p class="text-xs dark:text-gray-400 ">({{ productsData.rating }}
                                                       customer reviews)</p>
                                           </div>
                                           <!-- dicription  -->
@@ -49,7 +49,7 @@
                                                       class="text-base font-normal text-gray-500 line-through dark:text-gray-400">${{
                                                             productsData.price * 2.3 }}</span>
                                           </p>
-                                          <p class="text-green-600 dark:text-green-300 ">7 in stock</p>
+                                          <p class="text-green-600 dark:text-green-300 ">{{ productsData.stock }} in stock</p>
                                     </div>
                                     <!-- Size select container -->
                                     <div class="flex items-center mb-8">

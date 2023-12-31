@@ -4,12 +4,13 @@ interface PostDetails {
       id: number
       image: string
       price: number
-      rating: {
-            rate: number
-            count: number
-      }
+      rating: number
       title: string
-      quantity: number
+      quantity: number 
+      stock: number
+      brand: string
+      thumbnail : string
+      discountPercentage : number
 }
 
 export const useCartStore = defineStore( 'Cartproduct' , ()=>{

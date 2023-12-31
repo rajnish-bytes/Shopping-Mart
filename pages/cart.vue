@@ -9,7 +9,7 @@
                         <div v-if="cartItems.cartItems.length" v-for="item, i in cartItems.cartItems" :key="i"
                               class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
                               <!-- product img -->
-                              <img :src="item.image" alt="product-image"
+                              <img :src="item.thumbnail" alt="product-image"
                                     class="w-full h-32 rounded-lg sm:w-40 object-contain" />
                               <!-- END -->
                               <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
@@ -106,7 +106,7 @@ import { useCartStore } from '~/store/cartStore';
 
 
 const cartItems = useCartStore()
-const shipping = computed(() => +(cartItems.totalPrice / 6).toFixed(2))
+const shipping = computed(() => +(cartItems.totalPrice / 16).toFixed(2))
 const subtotal = computed(() => +(cartItems.totalPrice).toFixed(2))
 
 </script>
