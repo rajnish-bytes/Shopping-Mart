@@ -1,13 +1,13 @@
 <template>
       <div class="bg-gradient-to-r from-[#dbedfa] to-[#faf4ff]">
-            <ul v-if="products.length" class="h-full w-full grid grid-cols-2 gap-x-6 gap-y-0 px-2 pb-0 sm:grid-cols-3 sm:px-8 pt-16 lg:grid-cols-3 lg:gap-x-10 lg:px-10 ">
+            <ul v-if="products.length" class="h-full w-full grid grid-cols-2 gap-x-6 gap-y-0 px-2 pb-0 sm:grid-cols-3 sm:px-8 pt-16 lg:grid-cols-3 lg:gap-x-10 lg:px-10 xl:px-32 place-items-center">
                   <!-- product card -->
                   <li v-for="product in products" :key="product.id"
                         class="relative mt-10 sm:mx-0 w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg effect"
                         >
                               <!-- product image -->
                               <NuxtLink :to="`/posts/${product.id}`" class="center">
-                                    <img class="h-40 rounded-t-lg sm:object-contain object-cover"
+                                    <img class="h-40 sm:h-60 rounded-t-lg sm:object-contain object-cover"
                                           :src="product.thumbnail"
                                           alt="product image" />
                               </NuxtLink>
