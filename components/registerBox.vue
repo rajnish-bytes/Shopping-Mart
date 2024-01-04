@@ -1,5 +1,5 @@
 <template>
-      <div class="h-2/4 w-2/4 -translate-y-10">
+      <div class="h-2/4 md:w-2/4 w-full mx-10 sm:mx-0">
             <!--  Heading -->
 
             <div class="sm:mx-auto sm:w-full sm:max-w-md">
