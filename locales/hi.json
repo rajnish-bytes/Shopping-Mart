@@ -7,7 +7,7 @@
       "Our shopping page is here to help you to choose the right one - you don't need to give an effort.": "हमारा शॉपिंग पेज आपको सही चीज़ चुनने में मदद करने के लिए यहां है - आपको कोई प्रयास करने की आवश्यकता नहीं है।",
       "EXPLORE": "अन्वेषण करना",
       "Login": "लॉग इन",
-      "LogOut": "लॉग आउट",
+      "Logout": "लॉग आउट",
       "Sign in to your account": "अपने अकाउंट में साइन इन करें",
       "create an account": "खाता बनाएं",
       "Email address": "मेल पता",
@@ -20,5 +20,6 @@
       "Create new account": "नया खाता बनाएँ",
       "Or": "या",
       "Sign Up": "साइन अप करें",
-      "Users": "उपभोक्ता"
+      "Users": "उपभोक्ता",
+      "Cart": "Cart"
 }

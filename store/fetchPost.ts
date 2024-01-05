@@ -11,8 +11,11 @@ interface PostDetails {
       quantity: number
       stock: number
       brand: string
-      thumbnail : string
-      discountPercentage : number
+      thumbnail: string
+      discountPercentage: number
+}
+type Data = {
+      products: PostDetails[] 
 }
 
 export const useFetchStore = defineStore('postData', () => {
@@ -24,13 +27,18 @@ export const useFetchStore = defineStore('postData', () => {
        *    getData function to fetch StoreApi
        */
       async function getData(): Promise<void> {
-            const { data }  = await useAsyncData('storeData', () => $fetch(`https://dummyjson.com/products?skip=${FetchLimit.value}&limit=${24}`) ) 
-            posts.value.push( ...data.value.products )
+            const { data } = await useAsyncData('storeData', () => $fetch(`https://dummyjson.com/products?skip=${FetchLimit.value}&limit=${24}`))
+            posts.value.push(...(data.value as Data).products)
       }
-      async function setFetchLimit(){
+
+      /**
+       *    Set ReFetching Limit
+       */
+      async function setFetchLimit() {
             FetchLimit.value += 24
             await getData()
       }
+
       return {
             productsData,
             getData,

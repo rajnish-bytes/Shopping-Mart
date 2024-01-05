@@ -1,5 +1,5 @@
 <template>
-      <div class="bg-gradient-to-r from-[#dbedfa] to-[#faf4ff]">
+      <div class="bg-gradient-to-r from-[#dbedfa] to-[#faf4ff] pb-10">
             <ul v-if="products.length" class="h-full w-full grid grid-cols-2 gap-x-6 gap-y-0 px-2 pb-0 sm:grid-cols-3 sm:px-8 pt-16 lg:grid-cols-3 lg:gap-x-10 lg:px-10 xl:px-32 place-items-center">
                   <!-- product card -->
                   <li v-for="product in products" :key="product.id"
@@ -54,9 +54,24 @@
 
 
                   </li>
+                  <!-- infinite loading state -->
+                  <template v-if="isLoding">
+
+                        <div v-for="cardSkeleton in 3" class="flex flex-col m-8 rounded shadow-md w-60 sm:w-80 animate-pulse h-96">
+                              <div class="h-48 rounded-t dark:bg-gray-700 bg-gray-300 center">
+                                    <Loding v-if="isLoding" class="absolute z-50 bg-transparent"/>
+                              </div>
+                              <div class="flex-1 px-4 py-8 space-y-4 sm:p-8 dark:bg-gray-900 bg-gray-100">
+                                    <div class="w-full h-6 rounded dark:bg-gray-700 bg-gray-200"></div>
+                                    <div class="w-full h-6 rounded dark:bg-gray-700 bg-gray-200"></div>
+                                    <div class="w-3/4 h-6 rounded dark:bg-gray-700 bg-gray-200"></div>
+                              </div>
+                        </div>
+                  </template>
             </ul>
+            
             <!-- product card loading state -->
-            <div v-else class="h-full center flex-wrap mt-14" >
+            <div v-else class="h-full grid grid-cols-2 gap-x-6 gap-y-0 px-2 pb-0 sm:grid-cols-3 sm:px-8 pt-16 lg:grid-cols-3 lg:gap-x-10 lg:px-10 xl:px-32 place-items-center" >
 
                   <div v-for="cardSkeleton in 6" class="flex flex-col m-8 rounded shadow-md w-60 sm:w-80 animate-pulse h-96">
                         <div class="h-48 rounded-t dark:bg-gray-700 bg-gray-300"></div>
@@ -67,35 +82,7 @@
                         </div>
                   </div>
             </div>
-
-      
-      <!-- END -->
-      <!-- <hr class=""> -->
-      <!-- Pagination -->
-      <div class="center m-10 py-10 bg-bl justify-between  text-lg">
-
-            <div class="flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer">
-                  <p @click="page -= 22" class=" ml-3 font-medium leading-none ">Previous</p>
-            </div>
-            <div class="sm:flex hidden">
-                  <p
-                        class=" font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
-                        1</p>
-                  <p
-                        class=" font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
-                        2</p>
-                  <p
-                        class=" font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
-                        3</p>
-                  <p
-                        class="font-medium leading-none cursor-pointer text-indigo-700 border-t border-indigo-400 pt-3 mr-4 px-2">
-                        4</p>
-            </div>
-
-            <div class="flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer">
-                  <p @click="set()" class=" font-medium leading-none mr-3">Next</p>
-            </div>
-      </div>
+    
       <!-- END -->
 </div>
 </template>
@@ -105,23 +92,28 @@ import { useCartStore } from '~/store/cartStore';
 import { useFetchStore } from '~/store/fetchPost';
 
 definePageMeta({
-      middleware: [ "auth" , "product-data-fetch"]
+      middleware: [ "auth" , "product-data-fetch"],
+      layout: 'product'
 })
-
+const isLoding = ref(false)
 const fetchStore = useFetchStore()
-const page = ref(0)
 const { addCartItem } = useCartStore()
 
-async function set() {
-      await fetchStore.setFetchLimit()
-      page.value += 24
-}
-/** computed property to get product data */
-const products = computed(() => fetchStore.productsData.slice(page.value , page.value + 24))
-watchEffect( () => {
-      if (page.value > fetchStore.productsData.length) page.value -= 24
-      else if (page.value < 0) page.value += 24
-})
 
+/** computed property to get product data */
+const products = computed(() => fetchStore.productsData)
+
+/**
+ *    when scrollEnd then add product more...
+ */
+window.onscrollend = async()=> {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 && products.value.length < 100) {
+            isLoding.value = true
+            setTimeout(async() => {
+                  await fetchStore.setFetchLimit()
+                  isLoding.value = false
+            }, 500);
+      }
+}
 
 </script>
