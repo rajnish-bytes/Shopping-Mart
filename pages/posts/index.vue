@@ -54,26 +54,12 @@
 
 
                   </li>
-                  <!-- infinite loading state -->
-                  <template v-if="isLoding">
-
-                        <div v-for="cardSkeleton in 3" class="flex flex-col m-8 rounded shadow-md w-60 sm:w-80 animate-pulse h-96">
-                              <div class="h-48 rounded-t dark:bg-gray-700 bg-gray-300 center">
-                                    <Loding v-if="isLoding" class="absolute z-50 bg-transparent"/>
-                              </div>
-                              <div class="flex-1 px-4 py-8 space-y-4 sm:p-8 dark:bg-gray-900 bg-gray-100">
-                                    <div class="w-full h-6 rounded dark:bg-gray-700 bg-gray-200"></div>
-                                    <div class="w-full h-6 rounded dark:bg-gray-700 bg-gray-200"></div>
-                                    <div class="w-3/4 h-6 rounded dark:bg-gray-700 bg-gray-200"></div>
-                              </div>
-                        </div>
-                  </template>
             </ul>
             
             <!-- product card loading state -->
             <div v-else class="h-full grid grid-cols-2 gap-x-6 gap-y-0 px-2 pb-0 sm:grid-cols-3 sm:px-8 pt-16 lg:grid-cols-3 lg:gap-x-10 lg:px-10 xl:px-32 place-items-center" >
 
-                  <div v-for="cardSkeleton in 6" class="flex flex-col m-8 rounded shadow-md w-60 sm:w-80 animate-pulse h-96">
+                  <div v-for="cardSkeleton in 6" class="relative m-8 rounded shadow-md w-full max-w-xs animate-pulse h-96">
                         <div class="h-48 rounded-t dark:bg-gray-700 bg-gray-300"></div>
                         <div class="flex-1 px-4 py-8 space-y-4 sm:p-8 dark:bg-gray-900 bg-gray-100">
                               <div class="w-full h-6 rounded dark:bg-gray-700 bg-gray-200"></div>
@@ -82,6 +68,11 @@
                         </div>
                   </div>
             </div>
+            <templat v-show="isLoding" >
+
+                  <Loding />
+
+            </templat>
     
       <!-- END -->
 </div>
@@ -95,7 +86,7 @@ definePageMeta({
       middleware: [ "auth" , "product-data-fetch"],
       layout: 'product'
 })
-const isLoding = ref(false)
+const isLoding = ref(true)
 const fetchStore = useFetchStore()
 const { addCartItem } = useCartStore()
 
@@ -107,7 +98,7 @@ const products = computed(() => fetchStore.productsData)
  *    when scrollEnd then add product more...
  */
 window.onscrollend = async()=> {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 && products.value.length < 100) {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight && products.value.length < 100) {
             isLoding.value = true
             setTimeout(async() => {
                   await fetchStore.setFetchLimit()
