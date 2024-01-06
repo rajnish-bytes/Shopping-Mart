@@ -22,23 +22,26 @@ onMounted(() => {
         if (route.path === '/login') {
             return navigateTo('/')
         }
-    }else{
+    } else {
         if (route.path === '/posts') {
             return navigateTo('/login')
         }
-        else if(route.path === '/posts/'){
+        else if (route.path === '/posts/') {
             return navigateTo('/login')
         }
     }
 
     const auth = getAuth()
     auth.onAuthStateChanged((user) => {
-        if(user){
+        if (user) {
             Loginuser.setUsername(user.displayName)
-        }else{
+        } else {
             Loginuser.setUsername('')
         }
     })
+
+
+
 })
 
 </script>

@@ -50,12 +50,16 @@ export default defineNuxtConfig({
 
   // PWA config
   pwa: {
-    strategies: 'generateSW',
-    registerType: 'autoUpdate',
+    // strategies: 'generateSW',
+    // registerType: 'autoUpdate',
+
     manifest: {
       name: "shopping mart",
       short_name: "shopping mart",
+      start_url: '/',
       description: "testing nuxt3 pwa",
+      theme_color: '#1169d0',
+      background_color: '#ffffff',
       icons: [
         {
           src: 'icons/icons8-apple-logo-64.png',
@@ -79,38 +83,100 @@ export default defineNuxtConfig({
         },
       ]
     },
-    workbox: {
-      // enabled: true,
-      globPatterns: ['**/*.{js,css,html,ico,png,svg,vue}'],
-      navigateFallback: null,
-      // preCaching: [
-      //   // Define the route for your homepage
-      //   { url: '/' },
-  
-      //   // Add other routes as needed
-      //   { url: '/about' },
-      //   { url: '/login' },
-      // ],
-      runtimeCaching: [
-        {
-          urlPattern: '.*',
-          // strategyOptions: {
-          //   cacheName: 'all-routes',
-          //   // cacheExpiration: {
-          //   //   maxEntries: 100,
-          //   //   maxAgeSeconds: 24 * 60 * 60 * 30, // 30 days
-          //   // },
-          // },
-          handler: 'StaleWhileRevalidate',
-        },
-      ],
-  },
-  devOptions: {
-    enabled: true,
-    suppressWarnings: true,
-    navigateFallbackAllowlist: [/^\/$/],
-    type: 'module',
-  },
-  },
+    // workbox: {
+    //   // enabled: true,
+    //   // offline: true,
+    //   // clientsClaim: true,
+    //   // skipWaiting: true,
+    //   globPatterns: ["**/*.{js,css,html,ico,png,svg,webp,woff2}"],
+    //   navigateFallback: '/',
+    //   // preCaching: [
+    //   //   '/',
+    //   //   '/about',
+    //   //   '/login'
+    //   // ],
+    //   // preCaching: [
+    //   //   // Define the route for your homepage
+    //   //   { url: '/' },
 
+    //   //   // Add other routes as needed
+    //   //   { url: '/about' },
+    //   //   { url: '/login' },
+    //   // ],
+    //   // runtimeCaching: [
+    //   //   {
+    //   //     urlPattern: '.*',
+    //   //     handler: 'StaleWhileRevalidate',
+    //   //   },
+    //   // ],
+    //   runtimeCaching: [
+    //     {
+    //       urlPattern: './*',
+    //       handler: 'StaleWhileRevalidate',
+    //       method: 'GET',
+    //       options: {
+    //         cacheName: "app-cache",
+    //         expiration: {
+    //           maxEntries: 50,
+    //           maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
+    //         },
+    //       },
+    //     },
+    //     // Cache assets
+    //     {
+    //       urlPattern: /\.(?:png|gif|jpg|jpeg|svg|css|js)$/,
+    //       handler: 'StaleWhileRevalidate',
+    //       options: {
+    //         cacheName: "assets-cache",
+    //         expiration: {
+    //           maxEntries: 50,
+    //           maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
+    //         },
+    //       },
+    //     },
+    //     {
+    //       urlPattern: /\.(?:html|htm)$/,
+    //       handler: 'StaleWhileRevalidate',
+    //       options: {
+    //         cacheName: 'html-cache',
+    //         expiration: {
+    //           maxEntries: 10,
+    //           maxAgeSeconds: 24 * 60 * 60, // 1 day
+    //         },
+    //       },
+    //     },
+    //   ],
+    // },
+    registerType: "prompt",
+    injectRegister: null,
+    strategies: "injectManifest",
+    srcDir: "/",
+    filename: "sw.ts",
+    workbox: {
+      clientsClaim: true,
+      skipWaiting: true,
+    },
+    devOptions: {
+      enabled: true,
+    },
+    injectManifest: {
+      globPatterns: ["**/*.{js,css,html,ico,png,svg,webp,woff2}"],
+    },
+    // devOptions: {
+    //   enabled: true,
+    //   suppressWarnings: true,
+    //   navigateFallbackAllowlist: [/^\/$/],
+    //   type: 'module',
+    // },
+  },
+  build: {},
+
+  nitro: {
+    externals: {
+      inline: ["uuid"],
+    },
+  },
+  routeRules: {
+    '/_nuxt/': { headers: { 'Service-Worker-Allowed': '/_nuxt/' } },
+  }
 })
