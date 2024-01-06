@@ -30,9 +30,11 @@
                         <div class="flex items-center">
                               <!-- Language Selector -->
                               <div class="md:mr-32 md:block hidden">
-                                    <select name="language" v-model="locale">
+                                    <select name="language" v-model="language">
                                           <option value="en">English</option>
                                           <option value="hi">हिंदी</option>
+                                          <option value="fr">Franch</option>
+                                          <option value="bho">Bhojpuri</option>
                                     </select>
                               </div>
                               <div class="flex items-center ms-3">
@@ -216,7 +218,13 @@ import { useCartStore } from '~/store/cartStore';
 const mobileSideBar = ref(false)
 const Loginuser = useUserAuthStore()
 const cartItems = useCartStore()
-const { locale } = useI18n()
+const { locale , setLocale} = useI18n()
+const language = computed({
+  get: () => locale.value,
+  set: async (value) => {
+    await setLocale(value);
+  },
+});
 
 function onNevigateSidebarOff() {
       mobileSideBar.value = window.innerWidth >= 766 ? true : false
