@@ -16,8 +16,9 @@ export default defineNuxtConfig({
   ],
   i18n: {
 
+    lazy: true,
+    langDir: "locales",
     strategy: "no_prefix",
-    defaultLocale: "hi",
     locales: [
       {
         code: "en",
@@ -31,20 +32,26 @@ export default defineNuxtConfig({
         name: "Hindi",
         file: "hi.json",
       },
+      {
+        code: "fr",
+        iso: "fr",
+        name: "Franch",
+        file: "fr.json",
+      },
+      {
+        code: "bho",
+        iso: "bho",
+        name: "Bhojpuri",
+        file: "bho.json",
+      },
     ],
-    lazy: true,
-    langDir: "locales",
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-      alwaysRedirect: true,
-    }
+    defaultLocale: "en",
   },
 
   // PWA config
   pwa: {
-    registerType: 'autoUpdate',
     strategies: 'generateSW',
+    registerType: 'autoUpdate',
     manifest: {
       name: "shopping mart",
       short_name: "shopping mart",
@@ -73,17 +80,37 @@ export default defineNuxtConfig({
       ]
     },
     workbox: {
-      // Only precache these files - html should be excluded
-      globPatterns: ['**/*.{js,css}'],
-  
-      // Don't fallback on document based (e.g. `/some-page`) requests
-      // Even though this says `null` by default, I had to set this specifically to `null` to make it work
-      navigateFallback: '/' ,
-  },
-    devOptions: {
       enabled: true,
-      type: 'module',
-    },
+      globPatterns: ['**/*.{js,css,html,ico,png,svg,vue}'],
+      navigateFallback: null,
+      preCaching: [
+        // Define the route for your homepage
+        { url: '/' },
+  
+        // Add other routes as needed
+        { url: '/about' },
+        { url: '/login' },
+      ],
+      runtimeCaching: [
+        {
+          urlPattern: '.*',
+          strategyOptions: {
+            cacheName: 'all-routes',
+            cacheExpiration: {
+              maxEntries: 100,
+              maxAgeSeconds: 24 * 60 * 60 * 30, // 30 days
+            },
+          },
+          handler: 'StaleWhileRevalidate',
+        },
+      ],
+  },
+  devOptions: {
+    enabled: true,
+    suppressWarnings: true,
+    navigateFallbackAllowlist: [/^\/$/],
+    type: 'module',
+  },
   },
 
 })

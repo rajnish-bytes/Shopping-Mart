@@ -18,7 +18,7 @@
                   class="mt-10 flex flex-col items-start justify-center space-y-4 py-8 px-4 sm:flex-row sm:space-y-0 md:justify-between lg:px-0">
                   <div class="max-w-lg">
                         <h1 class="text-3xl font-bold text-gray-800">{{$t('welcome')}} <span class="text-purple-500 underline">{{ name }}</span></h1>
-                        <p class="mt-2 text-gray-600">{{ $t(`Our shopping page is here to help you to choose the right one - you don't need to give an effort.`) }}</p>
+                        <p class="mt-2 text-gray-600">{{ $t('Our shopping page is here to help you to choose the right one') }}</p>
                   </div>
 
             </div>
