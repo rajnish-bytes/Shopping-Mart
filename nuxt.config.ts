@@ -83,27 +83,6 @@ export default defineNuxtConfig({
       // enabled: true,
       globPatterns: ['**/*.{js,css,html,ico,png,svg,vue}'],
       navigateFallback: null,
-      // preCaching: [
-      //   // Define the route for your homepage
-      //   { url: '/' },
-  
-      //   // Add other routes as needed
-      //   { url: '/about' },
-      //   { url: '/login' },
-      // ],
-      runtimeCaching: [
-        {
-          urlPattern: '.*',
-          // strategyOptions: {
-          //   cacheName: 'all-routes',
-          //   // cacheExpiration: {
-          //   //   maxEntries: 100,
-          //   //   maxAgeSeconds: 24 * 60 * 60 * 30, // 30 days
-          //   // },
-          // },
-          handler: 'StaleWhileRevalidate',
-        },
-      ],
   },
   devOptions: {
     enabled: true,

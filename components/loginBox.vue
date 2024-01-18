@@ -72,9 +72,18 @@
                         <!-- media Images logo -->
                         <div class="mt-6 grid grid-cols-3 gap-3">
 
-                              <div v-for="svg in mediaImg" key="svg"
+                              <div 
+                              @click="useGoogleLogin()"
                                     class="w-full center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                    <img class="h-5 w-5" :src="svg" alt="">
+                                    <img class="h-5 w-5" src="https://www.svgrepo.com/show/506498/google.svg" alt="">
+                              </div>
+                              <div  
+                                    class="w-full center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                    <img class="h-5 w-5" src="https://www.svgrepo.com/show/512120/facebook-176.svg" alt="">
+                              </div>
+                              <div 
+                                    class="w-full center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                    <img class="h-5 w-5" src="https://www.svgrepo.com/show/513008/twitter-154.svg" alt="">
                               </div>
 
                         </div>
@@ -84,19 +93,12 @@
 </template>
 
 <script setup>
-import { useUserAuthStore } from "~/store/userAuth";
+import { useGoogleLogin } from "~/composables/useFirebaseAuth";
 
-const { login } = useUserAuthStore()
 const email = ref()
 const password = ref()
 
-const mediaImg = [
-      "https://www.svgrepo.com/show/512120/facebook-176.svg",
-      "https://www.svgrepo.com/show/513008/twitter-154.svg",
-      "https://www.svgrepo.com/show/506498/google.svg",
-]
-
 function Loginuser(){
-       useLoginWithEmailPass(email.value , password.value)
+      useLoginWithEmailPass(email.value , password.value)
 }
 </script>
