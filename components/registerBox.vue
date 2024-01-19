@@ -8,7 +8,7 @@
                   </h2>
                   <p class="mt-2 text-center text-sm text-gray-600 max-w">
                         {{ $t(`Or`) }}
-                        <NuxtLink to="/login" class="font-medium text-blue-700 hover:text-blue-800">
+                        <NuxtLink :to="localePath('login')" class="font-medium text-blue-700 hover:text-blue-800">
                               {{ $t(`Login`) }}
                         </NuxtLink>
                   </p>
@@ -117,6 +117,7 @@ const newUser = ref({
       Fname: '',
       Lname: '',
 })
+const localePath = useLocalePath()
 
 function add(){
       useAddEmailPass(newUser.value.email , newUser.value.password , newUser.value.Fname , newUser.value.Lname)

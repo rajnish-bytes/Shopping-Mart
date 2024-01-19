@@ -6,7 +6,7 @@
                         class="relative mt-10 sm:mx-0 w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg effect"
                         >
                               <!-- product image -->
-                              <NuxtLink :to="`/posts/${product.id}`" class="center">
+                              <NuxtLink :to="`/en/posts/${product.id}`" class="center">
                                     <img class="h-40 sm:h-60 rounded-t-lg sm:object-contain object-cover"
                                           :src="product.thumbnail"
                                           alt="product image" />
@@ -16,7 +16,7 @@
                               <!-- product detailes -->
                               <div class="mt-2 sm:px-5 sm:pb-5 px-2 pb-2">
                                     <!-- product title -->
-                                    <NuxtLink :to="`/posts/${product.id}`" class=""> 
+                                    <NuxtLink :to="`/en/posts/${product.id}`" class=""> 
                                           <h5 class="text-md font-semibold  text-slate-900 overflow-hidden h-12 ">{{ product.title }}</h5>
                                     </NuxtLink>
                                     <!-- product rating and star -->
@@ -68,11 +68,11 @@
                         </div>
                   </div>
             </div>
-            <templat v-show="isLoding" >
+            <template v-if="isLoding" >
 
                   <Loding />
 
-            </templat>
+            </template>
     
       <!-- END -->
 </div>
@@ -86,7 +86,7 @@ definePageMeta({
       middleware: [ "auth" , "product-data-fetch"],
       layout: 'product'
 })
-const isLoding = ref(true)
+const isLoding = ref(false)
 const fetchStore = useFetchStore()
 const { addCartItem } = useCartStore()
 
@@ -98,7 +98,7 @@ const products = computed(() => fetchStore.productsData)
  *    when scrollEnd then add product more...
  */
 window.onscrollend = async()=> {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight && products.value.length < 100) {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight && products.value.length < 500 && products.value.length < 100) {
             isLoding.value = true
             setTimeout(async() => {
                   await fetchStore.setFetchLimit()

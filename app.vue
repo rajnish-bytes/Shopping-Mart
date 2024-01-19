@@ -16,20 +16,20 @@ import { useUserAuthStore } from "~/store/userAuth";
 onMounted(() => {
     const Loginuser = useUserAuthStore()
     Loginuser.setLoginData()
-    const route = useRoute()
+    // const route = useRoute()
 
-    if (Loginuser.userlogin) {
-        if (route.path === '/login') {
-            return navigateTo('/')
-        }
-    }else{
-        if (route.path === '/posts') {
-            return navigateTo('/login')
-        }
-        else if(route.path === '/posts/'){
-            return navigateTo('/login')
-        }
-    }
+    // if (Loginuser.userlogin) {
+    //     if (route.path === '/login') {
+    //         return navigateTo('/')
+    //     }
+    // }else{
+    //     if (route.path === '/posts') {
+    //         return navigateTo('/login')
+    //     }
+    //     else if(route.path === '/posts/'){
+    //         return navigateTo('/login')
+    //     }
+    // }
 
     const auth = getAuth()
     auth.onAuthStateChanged((user) => {

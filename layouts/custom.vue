@@ -2,7 +2,7 @@
       <Topnavbar />
       <div class="min-h-full w-screen flex flex-col-reverse md:center md:flex-row">
             <div class="min-h-full w-screen center hidden sm:flex bg-white">
-                  <img v-if="route.path === '/login'"
+                  <img v-if="route.path === useLocalePath('login')"
                         src="/img/login.jpg" 
                         alt="Welcome to the login Page"
                         class="w-full h-full object-cover " />

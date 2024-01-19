@@ -6,7 +6,7 @@
                         <!-- Left top Logo  -->
                         <div class="flex items-center justify-start rtl:justify-end">
                               <!-- Website Logo -->
-                              <NuxtLink to="/" class="flex ms-2 md:me-24">
+                              <NuxtLink :to="localePath('index')" class="flex ms-2 md:me-24">
                                     <img src="/icons/icons8-apple-logo-64.png" class="h-8 me-3"
                                           alt="FlowBite Logo" />
                                     <span
@@ -16,12 +16,14 @@
                         <!-- User Profile Image top-right  -->
                         <div class="flex items-center">
                               <!-- Language Selector -->
-        <div class="md:mr-32 md:block hidden">
-            <select name="language" v-model="locale">
-                <option value="en">English</option>
-                <option value="hi">हिंदी</option>
-            </select>
-        </div>
+                              <div class="md:mr-32 md:block hidden">
+                                    <select name="language" v-model="language">
+                                          <option value="en">English</option>
+                                          <option value="hi">हिंदी</option>
+                                          <option value="fr">Franch</option>
+                                          <option value="bho">Bhojpuri</option>
+                                    </select>
+                              </div>
                               <div class="flex items-center ms-3">
                                     <div>
                                           <button type="button"
@@ -76,6 +78,12 @@
 </template>
 
 <script setup>
-const { locale } = useI18n()
-
+const { locale , setLocale } = useI18n()
+const localePath = useLocalePath()
+const language = computed({
+  get: () => locale.value,
+  set: async (value) => {
+    await setLocale(value);
+  },
+});
 </script>

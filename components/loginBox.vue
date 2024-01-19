@@ -8,7 +8,7 @@
                   </h2>
                   <p class="mt-2 text-center text-sm text-gray-600 max-w">
                         {{ $t(`Or`) }}
-                        <NuxtLink to="/register" class="font-medium text-blue-600 hover:text-blue-500">
+                        <NuxtLink :to="localePath('register')" class="font-medium text-blue-600 hover:text-blue-500">
                               {{ $t(`create an account`) }}
                         </NuxtLink>
                   </p>
@@ -62,7 +62,7 @@
                                     <button type="submit" @click.prevent="Loginuser"
                                           class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 
-                                          {{ $t(`Sign in`) }}
+                                          {{ $t(`Sign In`) }}
                                     </button>
                               </div>
                         </form>
@@ -97,6 +97,7 @@ import { useGoogleLogin } from "~/composables/useFirebaseAuth";
 
 const email = ref()
 const password = ref()
+const localePath = useLocalePath()
 
 function Loginuser(){
       useLoginWithEmailPass(email.value , password.value)

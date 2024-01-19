@@ -19,7 +19,7 @@
                                     </svg>
                               </button>
                               <!-- Website Logo -->
-                              <NuxtLink to="/" class="flex ms-2 md:me-24">
+                              <NuxtLink :to="localePath('index')" class="flex ms-2 md:me-24">
                                     <img src="/icons/icons8-apple-logo-64.png" class="h-8 me-3" alt="FlowBite Logo" />
                                     <span
                                           class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Shopping
@@ -99,7 +99,7 @@
                         <ul class="space-y-2 font-medium">
                               <!-- HomePage -->
                               <li>
-                                    <NuxtLink to="/" @click="onNevigateSidebarOff()"
+                                    <NuxtLink :to="localePath('index')" @click="onNevigateSidebarOff()"
                                           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                           <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -114,7 +114,7 @@
                               </li>
                               <!-- Product Page -->
                               <li>
-                                    <NuxtLink to="/posts" @click="onNevigateSidebarOff()"
+                                    <NuxtLink :to="localePath('posts')" @click="onNevigateSidebarOff()"
                                           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                           <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -129,7 +129,7 @@
                               </li>
                               <!-- Cart Page -->
                               <li v-if="Loginuser.userlogin">
-                                    <NuxtLink to="/cart" @click="onNevigateSidebarOff()"
+                                    <NuxtLink :to="localePath('cart')" @click="onNevigateSidebarOff()"
                                           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                           <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -158,7 +158,7 @@
                               </li>
                               <!-- Login And Logout page -->
                               <li>
-                                    <NuxtLink to="/login" @click="onNevigateSidebarOff()"
+                                    <NuxtLink :to="localePath('login')" @click="onNevigateSidebarOff()"
                                           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                           <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -174,7 +174,7 @@
                               </li>
                               <!-- Register Page -->
                               <li v-if="!Loginuser.userlogin">
-                                    <NuxtLink to="/register" @click="onNevigateSidebarOff()"
+                                    <NuxtLink :to="localePath('register')" @click="onNevigateSidebarOff()"
                                           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                           <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -190,7 +190,7 @@
                                     </NuxtLink>
                               </li>
                               <li>
-                                    <NuxtLink to="/about" @click="onNevigateSidebarOff()"
+                                    <NuxtLink :to="localePath('about')" @click="onNevigateSidebarOff()"
                                           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                           <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -218,7 +218,9 @@ import { useCartStore } from '~/store/cartStore';
 const mobileSideBar = ref(false)
 const Loginuser = useUserAuthStore()
 const cartItems = useCartStore()
-const { locale , setLocale} = useI18n()
+/** Switch Language */
+const { locale , setLocale } = useI18n()
+const localePath = useLocalePath()
 const language = computed({
   get: () => locale.value,
   set: async (value) => {
@@ -236,7 +238,7 @@ onMounted(() => {
 
 function logoutUser() {
       useLogoutUser()
-      return navigateTo("/login")
+      return navigateTo("/en/login")
 }
 
 let isdark = ref(false)

@@ -101,10 +101,24 @@
       </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useCartStore } from "~/store/cartStore";
 import { useFetchStore } from "~/store/fetchPost";
 
+interface PostDetails {
+      category: string
+      description: string
+      id: number
+      images: string[]
+      price: number
+      rating: number
+      title: string
+      quantity: number
+      stock: number
+      brand: string
+      thumbnail: string
+      discountPercentage: number
+}
 definePageMeta({
       middleware: "auth"
 })
@@ -122,6 +136,10 @@ function decrese(){
             qnt.value -= 1
       }
 }
-const productsData = toRaw(productStore.productsData)[route.params.id - 1]
+let productsData = toRaw(productStore.productsData)[route.params.id - 1]
+if(!productsData){
+      const { data } = await useAsyncData('storeData', () => $fetch(`https://dummyjson.com/products/${route.params.id}`))
+      productsData = data.value as PostDetails
+}
 
 </script>

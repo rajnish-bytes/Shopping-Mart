@@ -4,7 +4,7 @@ export default defineNuxtRouteMiddleware((to,from) => {
       const login = useUserAuthStore()
 
       if( login.userlogin === false ){
-            return navigateTo("/login")
+            return navigateTo("/en/login")
       }
            
 })
