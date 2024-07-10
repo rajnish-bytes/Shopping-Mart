@@ -54,7 +54,7 @@
         <div v-for="pro in catalog"
           class="relative flex flex-col text-gray-700 shadow-md bg-clip-border rounded-xl w-60 ">
           <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-60">
-            <img :src="`/public/img/${pro.img}`" alt="card-image"
+            <img :src="`/_nuxt/public/img/${pro.img}`" alt="card-image"
               class="object-cover w-full h-full hover:scale-110 transition-all" />
           </div>
           <div class=" pt-0">
