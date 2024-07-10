@@ -41,7 +41,7 @@
         <div
           class="relative row-span-2 col-span-2 flex flex-col text-gray-700 shadow-md bg-clip-border rounded-xl w-full">
           <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-full">
-            <img src="/public/img/catalogHome.jpg" alt="card-image" class="object-cover w-full h-full" />
+            <img src="/assets/images/catalogHome.jpg" alt="card-image" class="object-cover w-full h-full" />
           </div>
           <div class="p-6 pt-0">
             <button
@@ -51,10 +51,10 @@
             </button>
           </div>
         </div>
-        <div v-for="pro in catalog"
+        <div v-for="pro in catalog" :key="pro.name" 
           class="relative flex flex-col text-gray-700 shadow-md bg-clip-border rounded-xl w-60 ">
           <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-60">
-            <img :src="`/_nuxt/public/img/${pro.img}`" alt="card-image"
+            <img :src="getImagePath(pro.img)" :alt="pro.name"
               class="object-cover w-full h-full hover:scale-110 transition-all" />
           </div>
           <div class=" pt-0">
@@ -75,8 +75,7 @@
       <div v-for="pro in catalog"
         class="group my-10 flex w-full max-w-xs flex-col overflow-hidden border border-gray-100 bg-white shadow-md">
         <a class="relative flex h-60 overflow-hidden" href="#">
-          <img class="absolute top-0 right-0 h-full w-full object-contain" :src="`_nuxt/public/img/${pro.img}`"
-            alt="product image" />
+          <Product :imageIcon="pro.img"/>
           <div class="absolute -right-16 bottom-0 mr-2 mb-4 space-y-2 transition-all duration-300 group-hover:right-0">
             <button
               class="flex h-10 w-10 items-center justify-center bg-gray-900 text-white transition hover:bg-gray-700">
@@ -114,40 +113,21 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 
 const catalog = ref([
-  {
-    img: "polo.webp",
-    name: "POLO"
-  },
-  {
-    img: "fullSleeves.jpg",
-    name: "Full Sleeves"
-  },
-  {
-    img: "planTshirt.webp",
-    name: "Regular Fit"
-  },
-  {
-    img: "hoodie.webp",
-    name: "Regular Fit"
-  },
-  {
-    img: "oversize.jpg",
-    name: "Oversize"
-  },
-  {
-    img: "catalogHome.jpg",
-    name: "Regular Fit"
-  },
-  {
-    img: "planTshirt.webp",
-    name: "Regular Fit"
-  },
-  {
-    img: "hoodie.webp",
-    name: "Regular Fit"
-  },
+  { img: "oversize.jpg", name: "POLO" },
+  { img: "fullSleeves.jpg", name: "Full Sleeves" },
+  { img: "planTshirt.webp", name: "Regular Fit" },
+  { img: "hoodie.webp", name: "Regular Fit" },
+  { img: "oversize.jpg", name: "Oversize" },
+  { img: "catalogHome.jpg", name: "Regular Fit" },
+  { img: "planTshirt.webp", name: "Regular Fit" },
+  { img: "hoodie.webp", name: "Regular Fit" },
 ])
 
+const getImagePath = (imageName) => {
+  // Use require to resolve the image path
+  return `_nuxt/assets/images/${imageName}`
+}
 </script>

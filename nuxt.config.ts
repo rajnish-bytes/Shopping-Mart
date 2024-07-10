@@ -3,17 +3,20 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
   css: ['~/assets/css/main.css'],
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/i18n',
     '@vite-pwa/nuxt'
   ],
+
   i18n: {
 
     lazy: true,
@@ -92,4 +95,5 @@ export default defineNuxtConfig({
   },
   },
 
+  compatibilityDate: "2024-07-10",
 })
