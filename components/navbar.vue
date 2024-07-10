@@ -1,262 +1,64 @@
 <template>
+	<header class="header sticky top-0 z-50 bg-transparent shadow-md flex items-center justify-between  py-02 px-32">
+		<!-- logo -->
+		<h1 class="w-3/12">
+			<a href="">
+				<svg viewBox="0 0 248 31" class="h-6 w-auto hover:text-green-500 duration-200">
+					<path
+						d="M25.517 0C18.712 0 14.46 3.382 12.758 10.146c2.552-3.382 5.529-4.65 8.931-3.805 1.941.482 3.329 1.882 4.864 3.432 2.502 2.524 5.398 5.445 11.722 5.445 6.804 0 11.057-3.382 12.758-10.145-2.551 3.382-5.528 4.65-8.93 3.804-1.942-.482-3.33-1.882-4.865-3.431C34.736 2.92 31.841 0 25.517 0zM12.758 15.218C5.954 15.218 1.701 18.6 0 25.364c2.552-3.382 5.529-4.65 8.93-3.805 1.942.482 3.33 1.882 4.865 3.432 2.502 2.524 5.397 5.445 11.722 5.445 6.804 0 11.057-3.381 12.758-10.145-2.552 3.382-5.529 4.65-8.931 3.805-1.941-.483-3.329-1.883-4.864-3.432-2.502-2.524-5.398-5.446-11.722-5.446z"
+						fill="#22C55E"></path>
+					<path fill-rule="evenodd" clip-rule="evenodd"
+						d="M76.546 12.825h-4.453v8.567c0 2.285 1.508 2.249 4.453 2.106v3.463c-5.962.714-8.332-.928-8.332-5.569v-8.567H64.91V9.112h3.304V4.318l3.879-1.143v5.937h4.453v3.713zM93.52 9.112h3.878v17.849h-3.878v-2.57c-1.365 1.891-3.484 3.034-6.285 3.034-4.884 0-8.942-4.105-8.942-9.389 0-5.318 4.058-9.388 8.942-9.388 2.801 0 4.92 1.142 6.285 2.999V9.112zm-5.674 14.636c3.232 0 5.674-2.392 5.674-5.712s-2.442-5.711-5.674-5.711-5.674 2.392-5.674 5.711c0 3.32 2.442 5.712 5.674 5.712zm16.016-17.313c-1.364 0-2.477-1.142-2.477-2.463a2.475 2.475 0 012.477-2.463 2.475 2.475 0 012.478 2.463c0 1.32-1.113 2.463-2.478 2.463zm-1.939 20.526V9.112h3.879v17.849h-3.879zm8.368 0V.9h3.878v26.06h-3.878zm29.053-17.849h4.094l-5.638 17.849h-3.807l-3.735-12.03-3.771 12.03h-3.806l-5.639-17.849h4.094l3.484 12.315 3.771-12.315h3.699l3.734 12.315 3.52-12.315zm8.906-2.677c-1.365 0-2.478-1.142-2.478-2.463a2.475 2.475 0 012.478-2.463 2.475 2.475 0 012.478 2.463c0 1.32-1.113 2.463-2.478 2.463zm-1.939 20.526V9.112h3.878v17.849h-3.878zm17.812-18.313c4.022 0 6.895 2.713 6.895 7.354V26.96h-3.878V16.394c0-2.713-1.58-4.14-4.022-4.14-2.55 0-4.561 1.499-4.561 5.14v9.567h-3.879V9.112h3.879v2.285c1.185-1.856 3.124-2.749 5.566-2.749zm25.282-6.675h3.879V26.96h-3.879v-2.57c-1.364 1.892-3.483 3.034-6.284 3.034-4.884 0-8.942-4.105-8.942-9.389 0-5.318 4.058-9.388 8.942-9.388 2.801 0 4.92 1.142 6.284 2.999V1.973zm-5.674 21.775c3.232 0 5.674-2.392 5.674-5.712s-2.442-5.711-5.674-5.711-5.674 2.392-5.674 5.711c0 3.32 2.442 5.712 5.674 5.712zm22.553 3.677c-5.423 0-9.481-4.105-9.481-9.389 0-5.318 4.058-9.388 9.481-9.388 3.519 0 6.572 1.82 8.008 4.605l-3.34 1.928c-.79-1.678-2.549-2.749-4.704-2.749-3.16 0-5.566 2.392-5.566 5.604 0 3.213 2.406 5.605 5.566 5.605 2.155 0 3.914-1.107 4.776-2.749l3.34 1.892c-1.508 2.82-4.561 4.64-8.08 4.64zm14.472-13.387c0 3.249 9.661 1.285 9.661 7.89 0 3.57-3.125 5.497-7.003 5.497-3.591 0-6.177-1.607-7.326-4.177l3.34-1.927c.574 1.606 2.011 2.57 3.986 2.57 1.724 0 3.052-.571 3.052-2 0-3.176-9.66-1.391-9.66-7.781 0-3.356 2.909-5.462 6.572-5.462 2.945 0 5.387 1.357 6.644 3.713l-3.268 1.82c-.647-1.392-1.904-2.035-3.376-2.035-1.401 0-2.622.607-2.622 1.892zm16.556 0c0 3.249 9.66 1.285 9.66 7.89 0 3.57-3.124 5.497-7.003 5.497-3.591 0-6.176-1.607-7.326-4.177l3.34-1.927c.575 1.606 2.011 2.57 3.986 2.57 1.724 0 3.053-.571 3.053-2 0-3.176-9.66-1.391-9.66-7.781 0-3.356 2.908-5.462 6.572-5.462 2.944 0 5.386 1.357 6.643 3.713l-3.268 1.82c-.646-1.392-1.903-2.035-3.375-2.035-1.401 0-2.622.607-2.622 1.892z"
+						fill="currentColor"></path>
+				</svg>
+			</a>
+		</h1>
 
-      <!-- top NavBar -->
-      <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-            <div class="px-3 py-3 lg:px-5 lg:pl-3">
-                  <div class="flex items-center justify-between">
-                        <!-- Left top Logo and Navbar open button -->
-                        <div class="flex items-center justify-start rtl:justify-end">
-                              <!-- navbar open button visible only mobile screen -->
-                              <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar"
-                                    @click="mobileSideBar = !mobileSideBar" aria-controls="logo-sidebar" type="button"
-                                    class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                                    <span class="sr-only">Open sidebar</span>
-                                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                                          xmlns="http://www.w3.org/2000/svg">
-                                          <path clip-rule="evenodd" fill-rule="evenodd"
-                                                d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-                                          </path>
-                                    </svg>
-                              </button>
-                              <!-- Website Logo -->
-                              <NuxtLink :to="localePath('index')" class="flex ms-2 md:me-24">
-                                    <img src="/icons/icons8-apple-logo-64.png" class="h-8 me-3" alt="FlowBite Logo" />
-                                    <span
-                                          class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Shopping
-                                          Mart</span>
-                              </NuxtLink>
-                        </div>
-                        <!-- User Profile Image top-right  -->
-                        <div class="flex items-center">
-                              <!-- Language Selector -->
-                              <div class="md:mr-32 md:block hidden">
-                                    <select name="language" v-model="language">
-                                          <option value="en">English</option>
-                                          <option value="hi">हिंदी</option>
-                                          <option value="fr">Franch</option>
-                                          <option value="bho">Bhojpuri</option>
-                                    </select>
-                              </div>
-                              <div class="flex items-center ms-3">
-                                    <div>
-                                          <button type="button" @click="darkmod()"
-                                                class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                                                aria-expanded="false" data-dropdown-toggle="dropdown-user">
-                                                <span class="sr-only">Open user menu</span>
-                                                <img class="w-8 h-8 rounded-full"
-                                                      src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                                                      alt="user photo">
-                                          </button>
-                                    </div>
-                                    <!-- user Profile detailes -->
-                                    <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
-                                          id="dropdown-user">
-                                          <div class="px-4 py-3" role="none">
-                                                <p class="text-sm text-gray-900 dark:text-white" role="none">
-                                                      Neil Sims
-                                                </p>
-                                                <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
-                                                      role="none">
-                                                      neil.sims@flowbite.com
-                                                </p>
-                                          </div>
-                                          <ul class="py-1" role="none">
-                                                <li>
-                                                      <a href="#"
-                                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                            role="menuitem">Dashboard</a>
-                                                </li>
-                                                <li>
-                                                      <a href="#"
-                                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                            role="menuitem">Settings</a>
-                                                </li>
-                                                <li>
-                                                      <a href="#"
-                                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                            role="menuitem">Earnings</a>
-                                                </li>
-                                                <li>
-                                                      <a href="#"
-                                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                            role="menuitem">Sign out</a>
-                                                </li>
-                                          </ul>
-                                    </div>
-                              </div>
-                        </div>
-                  </div>
-            </div>
-      </nav>
-      <!-- Sidebar Navigation -->
-      <Transition name="list">
-            <aside id="logo-sidebar" v-if="mobileSideBar"
-                  class="fixed top-0 left-0 z-40 w-64 h-screen pt-16 backdrop-filter backdrop-blur-lg bg-gray-100/60 bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700"
-                  aria-label="Sidebar">
-                  <!-- Nav list -->
-                  <div
-                        class="h-full px-3 pb-4 overflow-y-auto backdrop-filter backdrop-blur-lg bg-gray-100/0 bg-white dark:bg-gray-800">
-                        <ul class="space-y-2 font-medium">
-                              <!-- HomePage -->
-                              <li>
-                                    <NuxtLink :to="localePath('index')" @click="onNevigateSidebarOff()"
-                                          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                          <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                viewBox="0 0 22 21">
-                                                <path
-                                                      d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
-                                                <path
-                                                      d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
-                                          </svg>
-                                          <span class="ms-3">{{ $t('Home') }}</span>
-                                    </NuxtLink>
-                              </li>
-                              <!-- Product Page -->
-                              <li>
-                                    <NuxtLink :to="localePath('posts')" @click="onNevigateSidebarOff()"
-                                          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                          <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                viewBox="0 0 18 20">
-                                                <path
-                                                      d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z" />
-                                          </svg>
-                                          <span class="flex-1 ms-3 whitespace-nowrap">{{ $t('Posts') }}</span>
-                                          <span
-                                                class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
-                                    </NuxtLink>
-                              </li>
-                              <!-- Cart Page -->
-                              <li v-if="Loginuser.userlogin">
-                                    <NuxtLink :to="localePath('cart')" @click="onNevigateSidebarOff()"
-                                          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                          <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                viewBox="0 0 20 20">
-                                                <path
-                                                      d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z" />
-                                          </svg>
-                                          <span class="flex-1 ms-3 whitespace-nowrap">{{ $t('Cart') }}</span>
-                                          <span
-                                                class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">{{
-                                                      cartItems.cartItems.length }}</span>
-                                    </NuxtLink>
-                              </li>
-                              <!-- User Page -->
-                              <li>
-                                    <NuxtLink to="#" @click="onNevigateSidebarOff()"
-                                          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                          <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                viewBox="0 0 20 18">
-                                                <path
-                                                      d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
-                                          </svg>
-                                          <span class="flex-1 ms-3 whitespace-nowrap">{{ $t('Users') }}</span>
-                                    </NuxtLink>
-                              </li>
-                              <!-- Login And Logout page -->
-                              <li>
-                                    <NuxtLink :to="localePath('login')" @click="onNevigateSidebarOff()"
-                                          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                          <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 18 16">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                      stroke-width="2"
-                                                      d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
-                                          </svg>
-                                          <span class="flex-1 ms-3 whitespace-nowrap" v-if="!Loginuser.userlogin">{{ $t('Sign In') }}</span>
-                                          <span class="flex-1 ms-3 whitespace-nowrap text-red-500" v-else
-                                                @click="logoutUser()">{{ $t('Logout') }}</span>
-                                    </NuxtLink>
-                              </li>
-                              <!-- Register Page -->
-                              <li v-if="!Loginuser.userlogin">
-                                    <NuxtLink :to="localePath('register')" @click="onNevigateSidebarOff()"
-                                          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                          <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                viewBox="0 0 20 20">
-                                                <path
-                                                      d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z" />
-                                                <path
-                                                      d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z" />
-                                                <path
-                                                      d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z" />
-                                          </svg>
-                                          <span class="flex-1 ms-3 whitespace-nowrap">{{ $t('Sign Up') }}</span>
-                                    </NuxtLink>
-                              </li>
-                              <li>
-                                    <NuxtLink :to="localePath('about')" @click="onNevigateSidebarOff()"
-                                          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                          <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                viewBox="0 0 20 20">
-                                                <path
-                                                      d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z" />
-                                                <path
-                                                      d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z" />
-                                                <path
-                                                      d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z" />
-                                          </svg>
-                                          <span class="flex-1 ms-3 whitespace-nowrap">{{ $t('About') }}</span>
-                                    </NuxtLink>
-                              </li>
-                        </ul>
-                  </div>
-            </aside>
-      </Transition>
+		<!-- navigation -->
+		<nav class="nav font-semibold text-lg">
+			<ul class="flex items-center">
+				<li
+					class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
+					<a href="">Accueil</a>
+				</li>
+				<li
+					class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer">
+					<a href="">Produits</a>
+				</li>
+				<li
+					class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer">
+					<a href="">Collections</a>
+				</li>
+				<li
+					class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer">
+					<a href="">Contact</a>
+				</li>
+			</ul>
+		</nav>
+
+		<!-- buttons --->
+		<div class="w-3/12 flex justify-end">
+			<a href="">
+				<svg class="h-8 p-1 svg-inline--fa fa-search fa-w-16 fa-9x hover:text-green-500 duration-200" aria-hidden="true"
+					focusable="false" data-prefix="far" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 512 512">
+					<path fill="currentColor"
+						d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z"
+						class=""></path>
+				</svg>
+			</a>
+			<a href="">
+				<svg class="h-8 p-1 svg-inline--fa fa-shopping-cart fa-w-18 fa-7x hover:text-green-500 duration-200"
+					aria-hidden="true" focusable="false" data-prefix="far" data-icon="shopping-cart" role="img"
+					xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+					<path fill="currentColor"
+						d="M551.991 64H144.28l-8.726-44.608C133.35 8.128 123.478 0 112 0H12C5.373 0 0 5.373 0 12v24c0 6.627 5.373 12 12 12h80.24l69.594 355.701C150.796 415.201 144 430.802 144 448c0 35.346 28.654 64 64 64s64-28.654 64-64a63.681 63.681 0 0 0-8.583-32h145.167a63.681 63.681 0 0 0-8.583 32c0 35.346 28.654 64 64 64 35.346 0 64-28.654 64-64 0-18.136-7.556-34.496-19.676-46.142l1.035-4.757c3.254-14.96-8.142-29.101-23.452-29.101H203.76l-9.39-48h312.405c11.29 0 21.054-7.869 23.452-18.902l45.216-208C578.695 78.139 567.299 64 551.991 64zM208 472c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm256 0c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm23.438-200H184.98l-31.31-160h368.548l-34.78 160z"
+						class=""></path>
+				</svg>
+			</a>
+		</div>
+	</header>
 </template>
-    
-<script setup lang="ts">
-import { useUserAuthStore } from "~/store/userAuth";
-import { useCartStore } from '~/store/cartStore';
 
-const mobileSideBar = ref(false)
-const Loginuser = useUserAuthStore()
-const cartItems = useCartStore()
-/** Switch Language */
-const { locale , setLocale } = useI18n()
-const localePath = useLocalePath()
-const language = computed({
-  get: () => locale.value,
-  set: async (value) => {
-    await setLocale(value);
-  },
-});
 
-function onNevigateSidebarOff() {
-      mobileSideBar.value = window.innerWidth >= 766 ? true : false
-}
-
-onMounted(() => {
-      mobileSideBar.value = window.innerWidth >= 766 ? true : false
-})
-
-function logoutUser() {
-      useLogoutUser()
-      return navigateTo("/en/login")
-}
-
-let isdark = ref(false)
-function darkmod() {
-      document.documentElement.classList.toggle('dark')
-      isdark.value = !isdark.value;
-}
-</script>
-
-<style scoped>
-.list-enter-active,
-.list-leave-active {
-      transition: all 0.5s ease;
-}
-
-.list-enter-from,
-.list-leave-to {
-      /* opacity: 0; */
-      transform: translateX(-100%);
-}
-</style>
+<script setup lang="ts"></script>

@@ -16,26 +16,12 @@ import { useUserAuthStore } from "~/store/userAuth";
 onMounted(() => {
     const Loginuser = useUserAuthStore()
     Loginuser.setLoginData()
-    // const route = useRoute()
-
-    // if (Loginuser.userlogin) {
-    //     if (route.path === '/login') {
-    //         return navigateTo('/')
-    //     }
-    // }else{
-    //     if (route.path === '/posts') {
-    //         return navigateTo('/login')
-    //     }
-    //     else if(route.path === '/posts/'){
-    //         return navigateTo('/login')
-    //     }
-    // }
 
     const auth = getAuth()
     auth.onAuthStateChanged((user) => {
-        if(user){
+        if (user) {
             Loginuser.setUsername(user.displayName)
-        }else{
+        } else {
             Loginuser.setUsername('')
         }
     })
@@ -43,10 +29,3 @@ onMounted(() => {
 
 </script>
 
-<style>
-/* .router-link-active {
-    font-weight: 400;
-    color: rgb(69, 162, 255);
-    border-bottom: solid 2px;
-} */
-</style>
